@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ورشة التخطيط الاستراتيجي الكنسي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══ TOKENS ════════════════════════════════════════════════ */
+:root {
+  --navy:      #1C2B5A;
+  --navy-mid:  #243470;
+  --navy-lite: #2E4099;
+  --gold:      #C9A84C;
+  --gold-lite: #F0D98A;
+  --gold-pale: #FFF8E7;
+  --teal:      #2A7F8F;
+  --teal-lite: #E0F4F7;
+  --green:     #1E6B1E;
+  --green-lite:#E8F5E8;
+  --red:       #8B1A1A;
+  --red-lite:  #FDF0F0;
+  --brown:     #7B3F00;
+  --brown-lite:#FFF3E0;
+  --cream:     #F8F6F0;
+  --white:     #FFFFFF;
+  --text:      #1A1A2E;
+  --muted:     #4A5568;
+  --border:    #E2E8F0;
+  --r:         12px;
+  --r-sm:      8px;
+  --shadow:    0 4px 20px rgba(28,43,90,.12);
+  --shadow-lg: 0 8px 40px rgba(28,43,90,.18);
+}
+
+/* ═══ RESET & BASE ══════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  direction:rtl;
+  min-height:100vh;
+  line-height:1.7;
+}
+::selection{background:var(--gold);color:var(--navy)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#f0f0f0}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ═══ TYPOGRAPHY ════════════════════════════════════════════ */
+h1,h2,h3,h4{font-family:'Noto Naskh Arabic',serif;font-weight:700;line-height:1.3}
+h1{font-size:clamp(1.8rem,4vw,3rem)}
+h2{font-size:clamp(1.3rem,2.5vw,1.9rem)}
+h3{font-size:clamp(1.1rem,2vw,1.4rem)}
+h4{font-size:1rem;font-weight:600}
+p{font-size:0.95rem;color:var(--muted)}
+label{font-size:0.875rem;font-weight:600;color:var(--navy);display:block;margin-bottom:6px}
+input,textarea,select{
+  font-family:inherit;font-size:0.95rem;direction:rtl;
+  width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--r-sm);
+  background:var(--white);color:var(--text);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+  resize:vertical;
+}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,168,76,.15);
+}
+textarea{min-height:90px}
+button{font-family:inherit;cursor:pointer;border:none;outline:none}
+a{color:inherit;text-decoration:none}
+
+/* ═══ LAYOUT ════════════════════════════════════════════════ */
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ═══ HEADER ════════════════════════════════════════════════ */
+.site-header{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--teal) 100%);
+  padding:50px 20px 40px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.site-header::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity:.5;
+}
+.header-cross{
+  font-size:3rem;margin-bottom:12px;
+  animation:float 4s ease-in-out infinite;
+  display:inline-block;filter:drop-shadow(0 2px 8px rgba(201,168,76,.4));
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.site-header h1{color:var(--white);margin-bottom:10px}
+.site-header p{color:var(--gold-lite);font-size:1.05rem;max-width:600px;margin:0 auto 24px}
+.header-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.badge{
+  background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
+  border:1px solid rgba(201,168,76,.3);
+  color:var(--gold-lite);padding:6px 16px;border-radius:50px;font-size:.8rem;font-weight:600;
+}
+
+/* ═══ JOURNEY NAV ════════════════════════════════════════════ */
+.journey-nav{
+  background:var(--white);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 12px rgba(28,43,90,.08);
+}
+.journey-inner{
+  display:flex;align-items:center;gap:0;overflow-x:auto;
+  max-width:1100px;margin:0 auto;padding:0 20px;
+  scrollbar-width:none;
+}
+.journey-inner::-webkit-scrollbar{display:none}
+.nav-step{
+  display:flex;align-items:center;gap:10px;
+  padding:14px 18px;cursor:pointer;border-bottom:3px solid transparent;
+  transition:all .2s;white-space:nowrap;font-weight:600;font-size:.85rem;color:var(--muted);
+  position:relative;
+}
+.nav-step:hover{color:var(--navy);border-bottom-color:var(--gold-lite)}
+.nav-step.active{color:var(--navy);border-bottom-color:var(--gold)}
+.nav-step .step-num{
+  width:28px;height:28px;border-radius:50%;background:var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;
+  transition:all .2s;flex-shrink:0;
+}
+.nav-step.active .step-num{background:var(--gold);color:var(--navy)}
+.nav-step.done .step-num{background:var(--green);color:white}
+.nav-step.done{color:var(--green)}
+.nav-divider{color:var(--border);font-size:1.2rem;flex-shrink:0;padding:0 2px}
+
+/* ═══ SECTIONS ══════════════════════════════════════════════ */
+.section{display:none;padding:40px 20px}
+.section.active{display:block;animation:fadeUp .35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══ SECTION HEADER ════════════════════════════════════════ */
+.sec-header{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  color:white;border-radius:var(--r);padding:28px 32px;margin-bottom:28px;
+  position:relative;overflow:hidden;
+}
+.sec-header::after{
+  content:'';position:absolute;left:-40px;bottom:-40px;
+  width:150px;height:150px;border-radius:50%;
+  background:rgba(201,168,76,.12);
+}
+.sec-header .sec-num{
+  font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.sec-header h2{color:white;margin-bottom:6px}
+.sec-header p{color:rgba(255,255,255,.75);font-size:.95rem;margin:0}
+.sec-icon{font-size:2.5rem;margin-bottom:12px}
+
+/* ═══ CARDS ═════════════════════════════════════════════════ */
+.card{
+  background:var(--white);border-radius:var(--r);
+  padding:24px;box-shadow:var(--shadow);border:1px solid rgba(226,232,240,.7);
+  transition:box-shadow .25s;
+}
+.card:hover{box-shadow:var(--shadow-lg)}
+.card-title{font-family:'Noto Naskh Arabic',serif;font-size:1.1rem;font-weight:700;
+  color:var(--navy);margin-bottom:16px;padding-bottom:10px;
+  border-bottom:2px solid var(--gold-pale);display:flex;align-items:center;gap:8px;
+}
+.card-title .icon{font-size:1.2rem}
+
+/* ═══ GRID LAYOUTS ══════════════════════════════════════════ */
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+
+/* ═══ SWOT MATRIX ═══════════════════════════════════════════ */
+.swot-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;
+  background:var(--navy);border-radius:var(--r);overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.swot-cell{
+  padding:22px;position:relative;min-height:220px;
+}
+.swot-cell.s{background:linear-gradient(135deg,#1a5c2a,#256b31)}
+.swot-cell.w{background:linear-gradient(135deg,#7b3f00,#8b4800)}
+.swot-cell.o{background:linear-gradient(135deg,#1f5f7a,#2a7f8f)}
+.swot-cell.t{background:linear-gradient(135deg,#7b1515,#8b1a1a)}
+.swot-label{
+  font-family:'Noto Naskh Arabic',serif;font-size:1.1rem;font-weight:700;
+  color:rgba(255,255,255,.95);margin-bottom:4px;
+}
+.swot-sublabel{font-size:.75rem;color:rgba(255,255,255,.6);margin-bottom:14px;letter-spacing:1px}
+.swot-letter{
+  position:absolute;left:16px;bottom:12px;
+  font-size:4rem;font-weight:900;color:rgba(255,255,255,.08);
+  font-family:'Tajawal',sans-serif;line-height:1;
+}
+.swot-items{list-style:none}
+.swot-item{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:6px 8px;margin-bottom:4px;border-radius:6px;
+  background:rgba(255,255,255,.08);font-size:.85rem;color:rgba(255,255,255,.9);
+  cursor:pointer;transition:background .2s;
+  animation:slideIn .3s ease;
+}
+.swot-item:hover{background:rgba(255,255,255,.15)}
+@keyframes slideIn{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:translateX(0)}}
+.swot-item .remove-btn{
+  margin-right:auto;background:none;color:rgba(255,255,255,.4);font-size:.8rem;
+  padding:0 4px;border-radius:3px;flex-shrink:0;
+  transition:color .2s;
+}
+.swot-item:hover .remove-btn{color:rgba(255,255,255,.8)}
+.swot-input-row{display:flex;gap:8px;margin-top:10px}
+.swot-input-row input{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:white;border-radius:6px;flex:1;font-size:.85rem;
+}
+.swot-input-row input::placeholder{color:rgba(255,255,255,.45)}
+.swot-input-row input:focus{border-color:rgba(255,255,255,.5);box-shadow:none}
+.swot-add-btn{
+  background:rgba(255,255,255,.2);color:white;border-radius:6px;
+  padding:8px 14px;font-size:.85rem;font-weight:600;
+  transition:background .2s;white-space:nowrap;
+}
+.swot-add-btn:hover{background:rgba(255,255,255,.3)}
+.swot-center{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:var(--gold);color:var(--navy);font-weight:800;
+  padding:8px 16px;border-radius:8px;font-size:1rem;z-index:2;
+  pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.3);
+  font-family:'Tajawal',sans-serif;
+}
+
+/* ═══ VISION BUILDER ════════════════════════════════════════ */
+.vision-preview{
+  background:linear-gradient(135deg,var(--navy),var(--teal));
+  border-radius:var(--r);padding:28px;text-align:center;
+  box-shadow:var(--shadow-lg);margin-top:20px;position:relative;overflow:hidden;
+}
+.vision-preview::before{
+  content:'✦';position:absolute;top:16px;right:20px;
+  font-size:3rem;color:rgba(201,168,76,.15);
+}
+.vision-preview::after{
+  content:'✦';position:absolute;bottom:16px;left:20px;
+  font-size:2rem;color:rgba(201,168,76,.1);
+}
+.vision-text{
+  font-family:'Noto Naskh Arabic',serif;font-size:1.4rem;font-weight:700;
+  color:white;line-height:1.6;min-height:60px;
+  position:relative;z-index:1;transition:all .4s;
+}
+.mission-text{
+  color:rgba(255,255,255,.8);font-size:.95rem;margin-top:12px;
+  font-style:italic;position:relative;z-index:1;
+}
+.values-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px;position:relative;z-index:1}
+.val-chip{
+  background:rgba(201,168,76,.25);color:var(--gold-lite);
+  padding:5px 14px;border-radius:50px;font-size:.8rem;font-weight:600;
+  border:1px solid rgba(201,168,76,.3);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+.form-group{margin-bottom:16px}
+
+/* ═══ KPI DASHBOARD ═════════════════════════════════════════ */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.kpi-card{
+  background:var(--white);border-radius:var(--r);padding:20px;
+  box-shadow:var(--shadow);border:1.5px solid var(--border);
+  transition:all .25s;
+}
+.kpi-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.kpi-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.kpi-icon{
+  width:44px;height:44px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;
+}
+.kpi-label{font-weight:700;font-size:.9rem;color:var(--navy)}
+.kpi-value-row{display:flex;align-items:baseline;gap:8px;margin-bottom:10px}
+.kpi-current{font-size:1.8rem;font-weight:800;color:var(--navy);font-family:'Tajawal',sans-serif}
+.kpi-target{font-size:.85rem;color:var(--muted)}
+.kpi-bar-track{height:8px;background:var(--border);border-radius:50px;overflow:hidden}
+.kpi-bar{height:100%;border-radius:50px;transition:width 1s cubic-bezier(.34,1.56,.64,1)}
+.kpi-pct{font-size:.8rem;color:var(--muted);margin-top:5px;text-align:left}
+.kpi-controls{display:flex;gap:6px;margin-top:10px}
+.kpi-btn{
+  flex:1;padding:6px;border-radius:6px;font-size:.8rem;font-weight:600;
+  background:var(--cream);color:var(--navy);border:1px solid var(--border);
+  transition:all .2s;
+}
+.kpi-btn:hover{background:var(--gold-pale);border-color:var(--gold)}
+.kpi-input-wrap{position:relative;margin-top:8px}
+.kpi-input-wrap input{font-size:.9rem;padding:7px 12px;text-align:center;font-weight:700}
+
+/* ═══ PRIORITY MATRIX ═══════════════════════════════════════ */
+.matrix-container{position:relative;width:100%;aspect-ratio:1;max-width:540px;margin:0 auto}
+.matrix-canvas{
+  width:100%;height:100%;background:white;border-radius:var(--r);
+  box-shadow:var(--shadow-lg);border:1.5px solid var(--border);
+  cursor:crosshair;
+}
+.matrix-labels{position:absolute;inset:0;pointer-events:none}
+.matrix-axis-x{
+  position:absolute;bottom:8%;left:50%;transform:translateX(-50%);
+  display:flex;justify-content:space-between;width:80%;font-size:.75rem;color:var(--muted)
+}
+.matrix-axis-y{
+  position:absolute;right:4%;top:50%;transform:translateY(-50%) rotate(90deg);
+  font-size:.75rem;color:var(--muted);white-space:nowrap;
+}
+.matrix-quadrant-labels{position:absolute;inset:0}
+.ql{
+  position:absolute;font-size:.7rem;font-weight:700;padding:4px 8px;
+  border-radius:4px;opacity:.7;
+}
+.ql.q1{top:10%;right:10%;background:var(--green-lite);color:var(--green)}
+.ql.q2{top:10%;left:10%;background:var(--gold-pale);color:var(--brown)}
+.ql.q3{bottom:18%;right:10%;background:var(--teal-lite);color:var(--teal)}
+.ql.q4{bottom:18%;left:10%;background:var(--red-lite);color:var(--red)}
+.matrix-dot{
+  position:absolute;width:36px;height:36px;border-radius:50%;
+  transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;
+  cursor:pointer;transition:transform .2s,box-shadow .2s;
+  color:white;box-shadow:0 2px 8px rgba(0,0,0,.2);
+  z-index:5;
+}
+.matrix-dot:hover{transform:translate(-50%,-50%) scale(1.2);z-index:10;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.matrix-dot .dot-label{
+  position:absolute;top:-26px;right:50%;transform:translateX(50%);
+  background:var(--navy);color:white;font-size:.65rem;padding:2px 7px;
+  border-radius:4px;white-space:nowrap;pointer-events:none;
+  opacity:0;transition:opacity .2s;
+}
+.matrix-dot:hover .dot-label{opacity:1}
+.initiative-form{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.initiative-form input{flex:1;min-width:150px}
+.initiative-form select{flex:0 0 130px}
+.add-init-btn{
+  background:var(--navy);color:white;padding:10px 20px;border-radius:var(--r-sm);
+  font-weight:600;font-size:.9rem;transition:background .2s;white-space:nowrap;
+}
+.add-init-btn:hover{background:var(--navy-lite)}
+.init-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--muted)}
+.legend-dot{width:12px;height:12px;border-radius:50%}
+
+/* ═══ SERVANT EVALUATION ════════════════════════════════════ */
+.eval-grid{display:grid;grid-template-columns:1fr;gap:0}
+.eval-row{
+  display:grid;grid-template-columns:1fr auto;align-items:center;
+  padding:14px 20px;border-bottom:1px solid var(--border);gap:20px;
+  transition:background .2s;
+}
+.eval-row:hover{background:var(--cream)}
+.eval-row:last-child{border-bottom:none}
+.eval-criterion{font-weight:600;font-size:.9rem;color:var(--navy)}
+.eval-criterion p{font-size:.78rem;color:var(--muted);font-weight:400;margin-top:2px}
+.stars{display:flex;gap:4px;flex-direction:row-reverse}
+.star{font-size:1.5rem;cursor:pointer;color:var(--border);transition:all .15s;line-height:1}
+.star.active{color:var(--gold)}
+.star:hover,.star.hover{color:var(--gold-lite);transform:scale(1.15)}
+.eval-score-ring{
+  width:100px;height:100px;position:relative;flex-shrink:0;margin:20px auto;
+}
+.ring-svg{transform:rotate(-90deg)}
+.ring-bg{fill:none;stroke:var(--border);stroke-width:8}
+.ring-fill{fill:none;stroke:var(--gold);stroke-width:8;stroke-linecap:round;
+  stroke-dasharray:251.2;stroke-dashoffset:251.2;
+  transition:stroke-dashoffset 1s cubic-bezier(.34,1.56,.64,1);}
+.ring-text{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+}
+.ring-num{font-size:1.6rem;font-weight:800;color:var(--navy);line-height:1;font-family:'Tajawal',sans-serif}
+.ring-denom{font-size:.7rem;color:var(--muted)}
+.servant-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.eval-result{
+  background:linear-gradient(135deg,var(--navy),var(--teal));
+  border-radius:var(--r);padding:24px;margin-top:20px;
+  display:none;animation:fadeUp .4s ease;
+}
+.eval-result.visible{display:block}
+.result-level{
+  font-family:'Noto Naskh Arabic',serif;font-size:1.5rem;font-weight:700;
+  color:var(--gold);margin-bottom:8px;
+}
+.result-desc{color:rgba(255,255,255,.85);font-size:.95rem}
+
+/* ═══ 90 DAY PLAN ═══════════════════════════════════════════ */
+.days-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:700px){.days-grid{grid-template-columns:1fr}}
+.phase-card{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.phase-header{padding:16px 20px;color:white;font-family:'Noto Naskh Arabic',serif}
+.phase-header h3{font-size:1.1rem;margin-bottom:4px}
+.phase-header p{font-size:.8rem;opacity:.8}
+.phase-body{background:white;padding:16px}
+.phase-task{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:10px;border-radius:var(--r-sm);margin-bottom:8px;
+  border:1.5px solid var(--border);background:var(--cream);
+  cursor:pointer;transition:all .2s;
+}
+.phase-task:hover{border-color:var(--gold);background:var(--gold-pale)}
+.phase-task.done{
+  background:var(--green-lite);border-color:var(--green);
+  text-decoration:line-through;color:var(--muted);
+}
+.task-check{
+  width:20px;height:20px;border-radius:50%;border:2px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:.7rem;transition:all .2s;margin-top:1px;
+}
+.phase-task.done .task-check{background:var(--green);border-color:var(--green);color:white}
+.task-text{font-size:.875rem;line-height:1.4}
+.add-task-form{display:flex;gap:8px;margin-top:12px}
+.add-task-form input{flex:1;font-size:.85rem;padding:8px 12px}
+.add-task-form button{
+  background:var(--navy);color:white;padding:8px 14px;border-radius:var(--r-sm);
+  font-size:.85rem;font-weight:600;white-space:nowrap;transition:background .2s;
+}
+.add-task-form button:hover{background:var(--navy-lite)}
+.progress-summary{
+  background:linear-gradient(135deg,var(--navy),var(--navy-mid));
+  border-radius:var(--r);padding:20px 24px;margin-bottom:24px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center;
+}
+.prog-stat{color:white}
+.prog-num{font-size:1.8rem;font-weight:800;color:var(--gold);font-family:'Tajawal',sans-serif}
+.prog-label{font-size:.8rem;color:rgba(255,255,255,.7);margin-top:2px}
+
+/* ═══ BUTTONS & ACTIONS ═════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 24px;border-radius:var(--r-sm);font-weight:700;font-size:.9rem;
+  transition:all .2s;cursor:pointer;border:none;font-family:inherit;
+}
+.btn-primary{background:var(--gold);color:var(--navy)}
+.btn-primary:hover{background:var(--gold-lite);transform:translateY(-1px);box-shadow:0 4px 12px rgba(201,168,76,.4)}
+.btn-navy{background:var(--navy);color:white}
+.btn-navy:hover{background:var(--navy-lite);transform:translateY(-1px)}
+.btn-outline{background:white;color:var(--navy);border:2px solid var(--navy)}
+.btn-outline:hover{background:var(--navy);color:white}
+.btn-danger{background:var(--red-lite);color:var(--red);border:1px solid var(--red)}
+.btn-danger:hover{background:var(--red);color:white}
+.btn-sm{padding:7px 16px;font-size:.82rem}
+.action-bar{
+  display:flex;gap:12px;justify-content:flex-end;align-items:center;
+  margin-top:28px;padding-top:20px;border-top:1px solid var(--border);flex-wrap:wrap;
+}
+
+/* ═══ PRINT / EXPORT ════════════════════════════════════════ */
+.export-bar{
+  background:var(--white);border-radius:var(--r);padding:16px 20px;
+  margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;
+  box-shadow:var(--shadow);flex-wrap:wrap;gap:12px;
+}
+.export-bar p{font-size:.88rem;color:var(--muted);margin:0}
+.export-btns{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ═══ TOAST ═════════════════════════════════════════════════ */
+.toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);
+  background:var(--navy);color:white;padding:12px 24px;border-radius:50px;
+  font-weight:600;font-size:.9rem;z-index:9999;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  border:1.5px solid var(--gold);
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ═══ CHART BARS ════════════════════════════════════════════ */
+.bar-chart{display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;align-items:center;gap:12px}
+.bar-label{width:140px;font-size:.82rem;font-weight:600;color:var(--navy);text-align:right;flex-shrink:0}
+.bar-track{flex:1;height:12px;background:var(--border);border-radius:50px;overflow:hidden}
+.bar-fill{height:100%;border-radius:50px;transition:width 1.2s cubic-bezier(.34,1.56,.64,1)}
+.bar-pct{width:36px;font-size:.78rem;color:var(--muted);flex-shrink:0;text-align:left}
+
+/* ═══ CHURCH WHEEL ══════════════════════════════════════════ */
+.wheel-container{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.wheel-svg-wrap{flex:0 0 280px;max-width:100%}
+.wheel-legend{flex:1;min-width:200px}
+.wheel-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:pointer;transition:background .2s;margin-bottom:4px}
+.wheel-item:hover{background:var(--cream)}
+.wheel-item.active{background:var(--gold-pale);border:1px solid var(--gold)}
+.wheel-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+.wheel-name{font-weight:600;font-size:.88rem;color:var(--navy)}
+.wheel-score{margin-right:auto;font-size:.8rem;color:var(--muted)}
+.wheel-slider{width:80px}
+
+/* ═══ RADAR / AMOEBA ════════════════════════════════════════ */
+.radar-wrap{position:relative;width:280px;height:280px;margin:0 auto}
+.radar-wrap svg{overflow:visible}
+
+/* ═══ RESPONSIVE ════════════════════════════════════════════ */
+@media(max-width:768px){
+  .swot-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .days-grid{grid-template-columns:1fr}
+  .progress-summary{grid-template-columns:1fr 1fr}
+  .servant-info-grid{grid-template-columns:1fr}
+  .nav-step span:not(.step-num){display:none}
+  .nav-step{padding:14px 12px}
+}
+@media print{
+  .journey-nav,.export-bar,.action-bar,.site-header .header-badges{display:none!important}
+  .section{display:block!important}
+  .card{break-inside:avoid}
+}
+
+/* ═══ MISC ══════════════════════════════════════════════════ */
+.divider{height:1px;background:var(--border);margin:20px 0}
+.text-gold{color:var(--gold)}
+.text-navy{color:var(--navy)}
+.text-muted{color:var(--muted)}
+.fw-bold{font-weight:700}
+.mt-8{margin-top:8px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}
+.mb-8{margin-bottom:8px}.mb-16{margin-bottom:16px}
+.flex-center{display:flex;align-items:center;justify-content:center}
+.gap-8{gap:8px}.gap-12{gap:12px}.gap-16{gap:16px}
+.tip-box{
+  background:var(--teal-lite);border-right:4px solid var(--teal);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:12px 16px;margin:12px 0;
+  font-size:.88rem;color:var(--teal);
+}
+.tip-box strong{font-weight:700}
+
+/* ═══ AUTH SCREEN ═══════════════════════════════════════════ */
+.auth-overlay{
+  position:fixed;inset:0;z-index:1000;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 60%,var(--teal) 100%);
+  padding:20px;overflow-y:auto;
+}
+.auth-card{
+  background:var(--white);border-radius:var(--r);box-shadow:var(--shadow-lg);
+  max-width:440px;width:100%;padding:36px 32px;max-height:92vh;overflow-y:auto;
+}
+.auth-logo{text-align:center;margin-bottom:22px}
+.auth-logo h2{font-size:1.25rem;margin-bottom:6px}
+.auth-logo p{font-size:.82rem}
+.auth-tabs{display:flex;background:var(--cream);border-radius:50px;padding:4px;margin-bottom:20px}
+.auth-tab{
+  flex:1;padding:9px 0;border-radius:50px;background:transparent;
+  font-weight:700;font-size:.88rem;color:var(--muted);transition:all .2s;
+}
+.auth-tab.active{background:var(--navy);color:var(--gold-lite)}
+.auth-form .form-group{margin-bottom:14px}
+.auth-error{
+  background:var(--red-lite);color:var(--red);border-right:4px solid var(--red);
+  border-radius:0 var(--r-sm) var(--r-sm) 0;padding:9px 14px;font-size:.82rem;
+  margin-bottom:14px;display:none;
+}
+.auth-error.show{display:block}
+.auth-hint{font-size:.78rem;color:var(--muted);text-align:center;margin-top:12px}
+
+/* ═══ LOGGED-IN USER BAR ════════════════════════════════════ */
+.user-bar{
+  background:var(--navy);color:var(--white);position:sticky;top:0;z-index:200;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
+.user-bar-inner{
+  max-width:1100px;margin:0 auto;padding:9px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+.user-bar-org{font-size:.86rem;font-weight:700;color:var(--gold-lite)}
+.user-bar-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.user-bar-saved{font-size:.74rem;color:rgba(255,255,255,.6)}
+.user-bar-btn{
+  padding:6px 14px;border-radius:50px;font-size:.78rem;font-weight:700;
+  transition:all .2s;
+}
+.user-bar-btn.save{background:var(--gold);color:var(--navy)}
+.user-bar-btn.save:hover{background:var(--gold-lite)}
+.user-bar-btn.logout{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:var(--white)}
+.user-bar-btn.logout:hover{border-color:var(--white)}
+@media(max-width:600px){
+  .user-bar-inner{justify-content:center;text-align:center}
+  .user-bar-saved{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════ AUTH SCREEN ═══════════════════════ -->
+<div id="authScreen" class="auth-overlay">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="header-cross" style="font-size:2.2rem;margin-bottom:6px">✝</div>
+      <h2>ورشة التخطيط الاستراتيجي الكنسي</h2>
+      <p>سجّل حساب كنيستك أو خدمتك لحفظ تقدمك في كل التطبيقات والرجوع إليه في أي وقت</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')" type="button">تسجيل الدخول</button>
+      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')" type="button">حساب جديد</button>
+    </div>
+
+    <div id="authError" class="auth-error"></div>
+
+    <form id="loginForm" class="auth-form" onsubmit="event.preventDefault();handleLogin();">
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="loginEmail" placeholder="example@church.com" required>
+      </div>
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input type="password" id="loginPassword" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">تسجيل الدخول</button>
+      <div class="auth-hint">
+        <a href="#" onclick="event.preventDefault();handleForgotPassword();">نسيت كلمة المرور؟</a>
+      </div>
+    </form>
+
+    <form id="registerForm" class="auth-form" style="display:none" onsubmit="event.preventDefault();handleRegister();">
+      <div class="form-group">
+        <label>اسم الكنيسة / الخدمة</label>
+        <input type="text" id="regOrgName" placeholder="مثال: كنيسة العذراء — خدمة الشباب" required>
+      </div>
+      <div class="form-group">
+        <label>نوع الجهة</label>
+        <select id="regOrgType">
+          <option value="كنيسة">كنيسة</option>
+          <option value="خدمة">خدمة / فريق خدمة</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>البريد الإلكتروني</label>
+        <input type="email" id="regEmail" placeholder="example@church.com" required>
+      </div>
+      <div class="form-group">
+        <label>كلمة المرور</label>
+        <input type="password" id="regPassword" placeholder="6 أحرف على الأقل" required>
+      </div>
+      <div class="form-group">
+        <label>تأكيد كلمة المرور</label>
+        <input type="password" id="regPassword2" placeholder="••••••••" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">إنشاء الحساب</button>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════ APP (hidden until login) ══════════ -->
+<div id="appRoot" style="display:none">
+
+<div class="user-bar">
+  <div class="user-bar-inner">
+    <div class="user-bar-org">🏛️ <span id="userOrgName">—</span></div>
+    <div class="user-bar-actions">
+      <span id="lastSaved" class="user-bar-saved">—</span>
+      <button class="user-bar-btn save" onclick="saveProgress()" type="button">💾 حفظ التقدم</button>
+      <button class="user-bar-btn logout" onclick="handleLogout()" type="button">تسجيل الخروج ⏻</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HEADER ══════════════════════════ -->
+<header class="site-header">
+  <div class="header-cross">✝</div>
+  <h1>ورشة التخطيط الاستراتيجي الكنسي</h1>
+  <p>ست تطبيقات تفاعلية متكاملة لبناء خطة استراتيجية حية لكنيستك</p>
+  <div class="header-badges">
+    <span class="badge">🎯 تحليل SWOT</span>
+    <span class="badge">💡 بناء الرؤية</span>
+    <span class="badge">📊 لوحة الأداء</span>
+    <span class="badge">⭐ الأولويات</span>
+    <span class="badge">👥 تقييم الخدام</span>
+    <span class="badge">📅 خطة 90 يوم</span>
+  </div>
+</header>
+
+<!-- ══════════════════════ NAV ══════════════════════════════ -->
+<nav class="journey-nav">
+  <div class="journey-inner">
+    <div class="nav-step active" onclick="goTo(0)">
+      <span class="step-num">1</span><span>تحليل SWOT</span>
+    </div>
+    <span class="nav-divider">›</span>
+    <div class="nav-step" onclick="goTo(1)">
+      <span class="step-num">2</span><span>الرؤية والرسالة</span>
+    </div>
+    <span class="nav-divider">›</span>
+    <div class="nav-step" onclick="goTo(2)">
+      <span class="step-num">3</span><span>لوحة الأداء</span>
+    </div>
+    <span class="nav-divider">›</span>
+    <div class="nav-step" onclick="goTo(3)">
+      <span class="step-num">4</span><span>مصفوفة الأولويات</span>
+    </div>
+    <span class="nav-divider">›</span>
+    <div class="nav-step" onclick="goTo(4)">
+      <span class="step-num">5</span><span>تقييم الخدام</span>
+    </div>
+    <span class="nav-divider">›</span>
+    <div class="nav-step" onclick="goTo(5)">
+      <span class="step-num">6</span><span>خطة 90 يوم</span>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══════════════════════ APP 1: SWOT ══════════════════════ -->
+<section class="section active container" id="s0">
+  <div class="sec-header">
+    <div class="sec-num">التطبيق 01</div>
+    <div class="sec-icon">🔍</div>
+    <h2>تحليل SWOT الكنسي التفاعلي</h2>
+    <p>أضف نقاطك في كل خانة — انقر على أي بطاقة لحذفها — صمّم تحليلاً حياً لكنيستك</p>
+  </div>
+
+  <div class="export-bar">
+    <p>📌 أضف ما لا يقل عن 3 نقاط في كل خانة للحصول على تحليل متوازن</p>
+    <div class="export-btns">
+      <button class="btn btn-outline btn-sm" onclick="printSwot()">🖨️ طباعة</button>
+      <button class="btn btn-navy btn-sm" onclick="exportSwot()">💾 تصدير PDF</button>
+    </div>
+  </div>
+
+  <div class="swot-grid" id="swotGrid">
+    <!-- S -->
+    <div class="swot-cell s">
+      <div class="swot-letter">S</div>
+      <div class="swot-label">نقاط القوة</div>
+      <div class="swot-sublabel">STRENGTHS</div>
+      <ul class="swot-items" id="swot-s"></ul>
+      <div class="swot-input-row">
+        <input type="text" id="inp-s" placeholder="أضف نقطة قوة..." onkeydown="if(event.key==='Enter')addSwot('s')">
+        <button class="swot-add-btn" onclick="addSwot('s')">+ إضافة</button>
+      </div>
+    </div>
+    <!-- O -->
+    <div class="swot-cell o">
+      <div class="swot-letter">O</div>
+      <div class="swot-label">الفرص</div>
+      <div class="swot-sublabel">OPPORTUNITIES</div>
+      <ul class="swot-items" id="swot-o"></ul>
+      <div class="swot-input-row">
+        <input type="text" id="inp-o" placeholder="أضف فرصة..." onkeydown="if(event.key==='Enter')addSwot('o')">
+        <button class="swot-add-btn" onclick="addSwot('o')">+ إضافة</button>
+      </div>
+    </div>
+    <!-- W -->
+    <div class="swot-cell w">
+      <div class="swot-letter">W</div>
+      <div class="swot-label">نقاط الضعف</div>
+      <div class="swot-sublabel">WEAKNESSES</div>
+      <ul class="swot-items" id="swot-w"></ul>
+      <div class="swot-input-row">
+        <input type="text" id="inp-w" placeholder="أضف نقطة ضعف..." onkeydown="if(event.key==='Enter')addSwot('w')">
+        <button class="swot-add-btn" onclick="addSwot('w')">+ إضافة</button>
+      </div>
+    </div>
+    <!-- T -->
+    <div class="swot-cell t">
+      <div class="swot-letter">T</div>
+      <div class="swot-label">التهديدات</div>
+      <div class="swot-sublabel">THREATS</div>
+      <ul class="swot-items" id="swot-t"></ul>
+      <div class="swot-input-row">
+        <input type="text" id="inp-t" placeholder="أضف تهديداً..." onkeydown="if(event.key==='Enter')addSwot('t')">
+        <button class="swot-add-btn" onclick="addSwot('t')">+ إضافة</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SWOT Summary -->
+  <div class="card mt-24" id="swotSummary">
+    <div class="card-title"><span class="icon">📈</span> ملخص التحليل الاستراتيجي</div>
+    <div class="grid-4" id="swotCounts" style="text-align:center;margin-bottom:16px">
+      <div style="padding:16px;background:var(--green-lite);border-radius:var(--r-sm)">
+        <div style="font-size:2rem;font-weight:800;color:var(--green);font-family:'Tajawal',sans-serif" id="cnt-s">0</div>
+        <div style="font-size:.8rem;color:var(--green);font-weight:600">نقاط القوة</div>
+      </div>
+      <div style="padding:16px;background:var(--teal-lite);border-radius:var(--r-sm)">
+        <div style="font-size:2rem;font-weight:800;color:var(--teal);font-family:'Tajawal',sans-serif" id="cnt-o">0</div>
+        <div style="font-size:.8rem;color:var(--teal);font-weight:600">الفرص</div>
+      </div>
+      <div style="padding:16px;background:var(--brown-lite);border-radius:var(--r-sm)">
+        <div style="font-size:2rem;font-weight:800;color:var(--brown);font-family:'Tajawal',sans-serif" id="cnt-w">0</div>
+        <div style="font-size:.8rem;color:var(--brown);font-weight:600">نقاط الضعف</div>
+      </div>
+      <div style="padding:16px;background:var(--red-lite);border-radius:var(--r-sm)">
+        <div style="font-size:2rem;font-weight:800;color:var(--red);font-family:'Tajawal',sans-serif" id="cnt-t">0</div>
+        <div style="font-size:.8rem;color:var(--red);font-weight:600">التهديدات</div>
+      </div>
+    </div>
+    <div class="bar-chart" id="swotBarChart"></div>
+    <div class="tip-box mt-16">
+      <strong>💡 نصيحة استراتيجية:</strong> بعد اكتمال التحليل، ابحث عن أفضل تقاطع لـ SO (نقوة × فرصة) وذلك هو محور استراتيجيتك الرئيسية!
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-navy" onclick="loadSwotSamples()">📋 تحميل أمثلة</button>
+    <button class="btn btn-primary" onclick="goTo(1)">التالي: الرؤية والرسالة ←</button>
+  </div>
+</section>
+
+<!-- ══════════════════════ APP 2: VISION ════════════════════ -->
+<section class="section container" id="s1">
+  <div class="sec-header">
+    <div class="sec-num">التطبيق 02</div>
+    <div class="sec-icon">💡</div>
+    <h2>مولّد الرؤية والرسالة والقيم</h2>
+    <p>أجب عن الأسئلة وشاهد رؤية كنيستك تتشكّل أمامك في الوقت الفعلي</p>
+  </div>
+
+  <div class="grid-2">
+    <!-- Form -->
+    <div>
+      <div class="card">
+        <div class="card-title"><span class="icon">🎯</span> بناء الرؤية</div>
+        <div class="form-group">
+          <label>ما اسم كنيستكم؟</label>
+          <input type="text" id="churchName" placeholder="مثال: الكنيسة الإنجيلية بالمعادي" oninput="buildVision()">
+        </div>
+        <div class="form-group">
+          <label>مَن هم الناس الذين تخدمونهم؟</label>
+          <input type="text" id="who" placeholder="مثال: العائلات والشباب في المنطقة" oninput="buildVision()">
+        </div>
+        <div class="form-group">
+          <label>ماذا تريد الكنيسة أن تصبح خلال 5 سنوات؟</label>
+          <textarea id="whatBecome" rows="2" placeholder="مثال: مرجعاً روحياً ومجتمعياً يُغيّر حياة الناس" oninput="buildVision()"></textarea>
+        </div>
+        <div class="form-group">
+          <label>ما الشيء الفريد الذي تقدمه كنيستكم؟</label>
+          <input type="text" id="unique" placeholder="مثال: التعليم العميق والخدمة المجتمعية" oninput="buildVision()">
+        </div>
+      </div>
+
+      <div class="card mt-16">
+        <div class="card-title"><span class="icon">📜</span> بناء الرسالة</div>
+        <div class="form-group">
+          <label>لماذا تُوجد كنيستكم؟ (السبب الجوهري)</label>
+          <textarea id="why" rows="2" placeholder="مثال: لإعلان إنجيل المسيح وتلمذة الأجيال وتحويل مجتمعنا" oninput="buildVision()"></textarea>
+        </div>
+        <div class="form-group">
+          <label>كيف تخدمون؟ (الطريقة والأسلوب)</label>
+          <input type="text" id="how" placeholder="مثال: بالعبادة الحية والتعليم والخدمة الاجتماعية" oninput="buildVision()">
+        </div>
+      </div>
+
+      <div class="card mt-16">
+        <div class="card-title"><span class="icon">⭐</span> القيم الجوهرية</div>
+        <p class="mb-8" style="font-size:.85rem">اختر قيم كنيستكم (اختر 3–6 قيم):</p>
+        <div id="valuesGrid" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <input type="text" id="customValue" placeholder="أضف قيمة مخصصة..." style="flex:1">
+          <button class="btn btn-navy btn-sm" onclick="addCustomValue()">+ إضافة</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Preview -->
+    <div>
+      <div class="vision-preview" id="visionPreview">
+        <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:12px;text-align:center">رؤية كنيستنا</div>
+        <div class="vision-text" id="visionOut">أن تكون كنيستنا... ابدأ بملء النموذج لترى رؤيتك هنا</div>
+        <div class="divider" style="background:rgba(255,255,255,.15);margin:16px 0"></div>
+        <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:8px;text-align:center">رسالتنا</div>
+        <div class="mission-text" id="missionOut">نسعى إلى...</div>
+        <div class="divider" style="background:rgba(255,255,255,.15);margin:16px 0"></div>
+        <div style="font-size:.75rem;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:10px;text-align:center">قيمنا الجوهرية</div>
+        <div class="values-chips" id="valuesOut"></div>
+      </div>
+
+      <div class="card mt-16">
+        <div class="card-title"><span class="icon">📊</span> مؤشر اكتمال الرؤية</div>
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="font-size:.85rem;color:var(--muted)">مستوى الاكتمال</span>
+            <span style="font-size:.85rem;font-weight:700;color:var(--navy)" id="visionPct">0%</span>
+          </div>
+          <div class="kpi-bar-track">
+            <div class="kpi-bar" id="visionBar" style="width:0%;background:linear-gradient(90deg,var(--gold),var(--teal))"></div>
+          </div>
+        </div>
+        <div id="visionChecklist" style="margin-top:12px"></div>
+      </div>
+
+      <div class="card mt-16">
+        <div class="card-title"><span class="icon">📋</span> بطاقة الهوية الكنسية</div>
+        <table style="width:100%;border-collapse:collapse;font-size:.85rem">
+          <tr>
+            <td style="padding:8px;background:var(--navy);color:var(--gold);font-weight:700;border-radius:6px 0 0 0;width:35%">الكنيسة</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)" id="id-name">—</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;background:var(--navy);color:var(--gold);font-weight:700">الرؤية</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border);color:var(--navy);font-style:italic" id="id-vision">—</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;background:var(--navy);color:var(--gold);font-weight:700">الرسالة</td>
+            <td style="padding:8px;border-bottom:1px solid var(--border)" id="id-mission">—</td>
+          </tr>
+          <tr>
+            <td style="padding:8px;background:var(--navy);color:var(--gold);font-weight:700;border-radius:0 0 0 6px">القيم</td>
+            <td style="padding:8px" id="id-values">—</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-outline" onclick="goTo(0)">→ السابق</button>
+    <button class="btn btn-navy" onclick="printSection('s1')">🖨️ طباعة</button>
+    <button class="btn btn-primary" onclick="goTo(2)">التالي: لوحة الأداء ←</button>
+  </div>
+</section>
+
+<!-- ══════════════════════ APP 3: KPI DASHBOARD ════════════ -->
+<section class="section container" id="s2">
+  <div class="sec-header">
+    <div class="sec-num">التطبيق 03</div>
+    <div class="sec-icon">📊</div>
+    <h2>لوحة مؤشرات الأداء الكنسية</h2>
+    <p>أدخل الأرقام الفعلية وتابع تقدم كنيستك مقارنةً بأهدافها بشكل بصري مباشر</p>
+  </div>
+
+  <div class="export-bar">
+    <p>💡 اضغط على أي بطاقة لتعديل القيم الفعلية والمستهدفة</p>
+    <div class="export-btns">
+      <button class="btn btn-outline btn-sm" onclick="resetKPIs()">↺ إعادة تعيين</button>
+      <button class="btn btn-navy btn-sm" onclick="printSection('s2')">🖨️ طباعة</button>
+    </div>
+  </div>
+
+  <!-- Overall Score -->
+  <div style="background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:var(--r);padding:24px;margin-bottom:24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="flex:1;min-width:200px">
+      <div style="font-size:.8rem;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:6px">الأداء الإجمالي للكنيسة</div>
+      <div style="font-size:3rem;font-weight:800;color:white;font-family:'Tajawal',sans-serif;line-height:1" id="overallScore">0%</div>
+      <div style="font-size:.85rem;color:rgba(255,255,255,.7);margin-top:6px" id="overallLabel">أدخل البيانات لتظهر النتيجة</div>
+    </div>
+    <div style="flex:0 0 200px" class="bar-chart" id="overallBar"></div>
+  </div>
+
+  <div class="kpi-grid" id="kpiGrid"></div>
+
+  <!-- Health Wheel -->
+  <div class="card mt-24">
+    <div class="card-title"><span class="icon">🎯</span> عجلة صحة الكنيسة</div>
+    <p class="mb-16" style="font-size:.85rem">قيّم كل محور من 1 إلى 10 لرسم صورة شاملة لصحة كنيستك</p>
+    <div class="wheel-container">
+      <div class="wheel-svg-wrap">
+        <canvas id="wheelCanvas" width="280" height="280"></canvas>
+      </div>
+      <div class="wheel-legend" id="wheelLegend"></div>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-outline" onclick="goTo(1)">→ السابق</button>
+    <button class="btn btn-primary" onclick="goTo(3)">التالي: مصفوفة الأولويات ←</button>
+  </div>
+</section>
+
+<!-- ══════════════════════ APP 4: PRIORITY MATRIX ═══════════ -->
+<section class="section container" id="s3">
+  <div class="sec-header">
+    <div class="sec-num">التطبيق 04</div>
+    <div class="sec-icon">⭐</div>
+    <h2>مصفوفة الأولويات الاستراتيجية</h2>
+    <p>ضع مبادراتك في المصفوفة بحسب الأهمية والإلحاحية — واكتشف أين تضع جهودك أولاً</p>
+  </div>
+
+  <div class="card mb-16">
+    <div class="card-title"><span class="icon">➕</span> إضافة مبادرة</div>
+    <div class="initiative-form">
+      <input type="text" id="initName" placeholder="اسم المبادرة أو المشروع..." style="flex:2">
+      <div style="flex:1;min-width:120px">
+        <label style="font-size:.78rem;margin-bottom:4px">الأهمية (1-10)</label>
+        <input type="range" id="initImp" min="1" max="10" value="5" style="width:100%;padding:4px 0;height:auto;border:none;background:none" oninput="document.getElementById('impVal').textContent=this.value">
+        <div style="text-align:center;font-size:.8rem;font-weight:700;color:var(--navy)" id="impVal">5</div>
+      </div>
+      <div style="flex:1;min-width:120px">
+        <label style="font-size:.78rem;margin-bottom:4px">الإلحاحية (1-10)</label>
+        <input type="range" id="initUrg" min="1" max="10" value="5" style="width:100%;padding:4px 0;height:auto;border:none;background:none" oninput="document.getElementById('urgVal').textContent=this.value">
+        <div style="text-align:center;font-size:.8rem;font-weight:700;color:var(--navy)" id="urgVal">5</div>
+      </div>
+      <div style="flex:0 0 auto;display:flex;align-items:flex-end">
+        <button class="add-init-btn" onclick="addInitiative()">+ إضافة</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="align-items:start">
+    <div>
+      <!-- Matrix -->
+      <div style="position:relative">
+        <canvas id="matrixCanvas" width="480" height="480" style="width:100%;max-width:480px;border-radius:var(--r);box-shadow:var(--shadow-lg);cursor:default"></canvas>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px;padding:0 20px;font-size:.75rem;color:var(--muted)">
+        <span>← أهمية منخفضة</span>
+        <span style="font-weight:700;color:var(--navy)">الأهمية →</span>
+        <span>أهمية عالية →</span>
+      </div>
+    </div>
+
+    <div>
+      <!-- Quadrant Legend -->
+      <div class="card" style="margin-bottom:14px">
+        <div class="card-title"><span class="icon">🗺️</span> مفتاح المصفوفة</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="padding:12px;border-radius:var(--r-sm);background:var(--green-lite);border:1px solid var(--green)">
+            <div style="font-weight:700;color:var(--green);font-size:.85rem;margin-bottom:4px">⬛ افعل الآن</div>
+            <div style="font-size:.78rem;color:var(--muted)">مهم جداً + عاجل جداً</div>
+          </div>
+          <div style="padding:12px;border-radius:var(--r-sm);background:var(--gold-pale);border:1px solid var(--gold)">
+            <div style="font-weight:700;color:var(--brown);font-size:.85rem;margin-bottom:4px">📅 جدوِل</div>
+            <div style="font-size:.78rem;color:var(--muted)">مهم جداً + غير عاجل</div>
+          </div>
+          <div style="padding:12px;border-radius:var(--r-sm);background:var(--teal-lite);border:1px solid var(--teal)">
+            <div style="font-weight:700;color:var(--teal);font-size:.85rem;margin-bottom:4px">👥 فوّض</div>
+            <div style="font-size:.78rem;color:var(--muted)">عاجل + أهمية أقل</div>
+          </div>
+          <div style="padding:12px;border-radius:var(--r-sm);background:var(--red-lite);border:1px solid var(--red)">
+            <div style="font-weight:700;color:var(--red);font-size:.85rem;margin-bottom:4px">🗑️ أزِل</div>
+            <div style="font-size:.78rem;color:var(--muted)">ليس مهماً + غير عاجل</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Initiative List -->
+      <div class="card">
+        <div class="card-title"><span class="icon">📋</span> قائمة المبادرات</div>
+        <div id="initList" style="max-height:300px;overflow-y:auto"></div>
+        <div class="tip-box mt-8">
+          <strong>🎯 مبدأ Pareto:</strong> ركّز 80% من طاقتك على الـ 20% من المبادرات الموجودة في ربع "افعل الآن"
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-outline" onclick="goTo(2)">→ السابق</button>
+    <button class="btn btn-navy" onclick="loadInitSamples()">📋 أمثلة</button>
+    <button class="btn btn-primary" onclick="goTo(4)">التالي: تقييم الخدام ←</button>
+  </div>
+</section>
+
+<!-- ══════════════════════ APP 5: SERVANT EVAL ══════════════ -->
+<section class="section container" id="s4">
+  <div class="sec-header">
+    <div class="sec-num">التطبيق 05</div>
+    <div class="sec-icon">👥</div>
+    <h2>نموذج تقييم الخادم الكنسي</h2>
+    <p>نظام تقييم شامل بـ 9 معايير مع تحليل بصري فوري وتوصيات للتطوير</p>
+  </div>
+
+  <div class="grid-2" style="align-items:start">
+    <div>
+      <div class="card">
+        <div class="card-title"><span class="icon">👤</span> بيانات الخادم</div>
+        <div class="servant-info-grid">
+          <div class="form-group" style="margin-bottom:0">
+            <label>الاسم الكامل</label>
+            <input type="text" id="servName" placeholder="اسم الخادم" oninput="updateServantInfo()">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label>مجال الخدمة</label>
+            <select id="servMinistry" onchange="updateServantInfo()">
+              <option value="">اختر مجال الخدمة</option>
+              <option>خدمة التسبيح والعبادة</option>
+              <option>خدمة تعليم الأطفال</option>
+              <option>خدمة الشباب</option>
+              <option>خدمة الإعلام والتواصل</option>
+              <option>خدمة الاستقبال والضيافة</option>
+              <option>خدمة المجموعات الصغيرة</option>
+              <option>خدمة الكرازة والتبشير</option>
+              <option>خدمة الاجتماعات والتخطيط</option>
+              <option>خدمة مجتمعية</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label>سنوات الخدمة</label>
+            <input type="number" id="servYears" placeholder="0" min="0" max="50">
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label>تاريخ التقييم</label>
+            <input type="date" id="servDate">
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-16">
+        <div class="card-title"><span class="icon">⭐</span> معايير التقييم</div>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:14px">انقر على النجوم لتقييم كل معيار من 1 إلى 5</p>
+        <div class="eval-grid" id="evalGrid"></div>
+      </div>
+    </div>
+
+    <div>
+      <!-- Ring Score -->
+      <div class="card" style="text-align:center">
+        <div class="card-title" style="justify-content:center"><span class="icon">📊</span> النتيجة الإجمالية</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:30px;flex-wrap:wrap;padding:16px">
+          <div class="eval-score-ring">
+            <svg class="ring-svg" width="100" height="100" viewBox="0 0 100 100">
+              <circle class="ring-bg" cx="50" cy="50" r="40"/>
+              <circle class="ring-fill" id="ringFill" cx="50" cy="50" r="40"/>
+            </svg>
+            <div class="ring-text">
+              <div class="ring-num" id="ringNum">0</div>
+              <div class="ring-denom">/ 45</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:1.6rem;font-weight:800;color:var(--gold);font-family:'Noto Naskh Arabic',serif" id="servantPct">0%</div>
+            <div style="font-size:.85rem;color:var(--muted)" id="servantLevel">قيّم الخادم</div>
+          </div>
+        </div>
+
+        <!-- Radar Chart -->
+        <canvas id="evalRadar" width="240" height="240" style="display:block;margin:0 auto"></canvas>
+      </div>
+
+      <!-- Breakdown bars -->
+      <div class="card mt-16">
+        <div class="card-title"><span class="icon">📈</span> تفصيل الأداء</div>
+        <div class="bar-chart" id="evalBars"></div>
+      </div>
+
+      <!-- Result card -->
+      <div class="eval-result" id="evalResult">
+        <div class="result-level" id="resultLevel">🌟 خادم متميز</div>
+        <div class="result-desc" id="resultDesc"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-outline" onclick="goTo(3)">→ السابق</button>
+    <button class="btn btn-danger btn-sm" onclick="resetEval()">↺ إعادة تعيين</button>
+    <button class="btn btn-navy" onclick="printSection('s4')">🖨️ طباعة التقرير</button>
+    <button class="btn btn-primary" onclick="goTo(5)">التالي: خطة 90 يوم ←</button>
+  </div>
+</section>
+
+<!-- ══════════════════════ APP 6: 90 DAY PLAN ══════════════ -->
+<section class="section container" id="s5">
+  <div class="sec-header">
+    <div class="sec-num">التطبيق 06</div>
+    <div class="sec-icon">📅</div>
+    <h2>خطة الـ 90 يوم الأولى</h2>
+    <p>ابنِ خطتك التنفيذية الفورية في ثلاث مراحل — اضغط على أي مهمة لتعليمها كمنجزة</p>
+  </div>
+
+  <!-- Church name input -->
+  <div class="card mb-16" style="padding:16px 20px">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <label>اسم الكنيسة / الفريق</label>
+        <input type="text" id="planChurch" placeholder="مثال: كنيسة القيامة - فريق القيادة" oninput="updatePlanHeader()">
+      </div>
+      <div style="flex:1;min-width:180px">
+        <label>تاريخ بدء الخطة</label>
+        <input type="date" id="planStart" oninput="updatePlanHeader()">
+      </div>
+      <div style="flex:1;min-width:180px">
+        <label>هدف الخطة الرئيسي</label>
+        <input type="text" id="planGoal" placeholder="مثال: إطلاق نظام المجموعات الصغيرة" oninput="updatePlanHeader()">
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Summary -->
+  <div class="progress-summary" id="progSummary">
+    <div class="prog-stat">
+      <div class="prog-num" id="prog1">0/0</div>
+      <div class="prog-label">المرحلة الأولى</div>
+    </div>
+    <div class="prog-stat">
+      <div class="prog-num" id="prog2">0/0</div>
+      <div class="prog-label">المرحلة الثانية</div>
+    </div>
+    <div class="prog-stat">
+      <div class="prog-num" id="prog3">0/0</div>
+      <div class="prog-label">المرحلة الثالثة</div>
+    </div>
+  </div>
+
+  <div class="days-grid" id="phasesGrid"></div>
+
+  <!-- Overall timeline bar -->
+  <div class="card mt-24">
+    <div class="card-title"><span class="icon">📈</span> الإنجاز الإجمالي</div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:8px">
+      <div style="flex:1">
+        <div class="kpi-bar-track" style="height:16px">
+          <div class="kpi-bar" id="totalBar" style="width:0%;background:linear-gradient(90deg,var(--green),var(--teal))"></div>
+        </div>
+      </div>
+      <div style="font-size:1.2rem;font-weight:800;color:var(--navy);font-family:'Tajawal',sans-serif;min-width:48px" id="totalPct">0%</div>
+    </div>
+    <div class="tip-box">
+      <strong>🙏 تذكّر:</strong> "أنا غرستُ وأبولّوس سقى، ولكنّ الله كان يُنمّي" — اعمل بجد وثق بأن الله هو مصدر النمو الحقيقي.
+    </div>
+  </div>
+
+  <div class="action-bar">
+    <button class="btn btn-outline" onclick="goTo(4)">→ السابق</button>
+    <button class="btn btn-navy" onclick="loadPlanSamples()">📋 تحميل نماذج</button>
+    <button class="btn btn-primary" onclick="printAll()">🖨️ طباعة الورشة كاملة</button>
+  </div>
+</section>
+
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+</div><!-- /#appRoot -->
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// GLOBALS
+// ═══════════════════════════════════════════════════════════
+const swotData = {s:[],o:[],w:[],t:[]};
+const selectedValues = new Set();
+const initiatives = [];
+const evalCriteria = [
+  {label:'الالتزام بالمواعيد والحضور',   desc:'الانتظام والالتزام بمواعيد الخدمة'},
+  {label:'جودة أداء مهام الخدمة',         desc:'مستوى الإتقان والجودة في العمل'},
+  {label:'روح التعاون مع الفريق',          desc:'القدرة على العمل الجماعي والتفاهم'},
+  {label:'الالتزام بقيم الكنيسة',          desc:'التطبيق العملي للقيم في الحياة اليومية'},
+  {label:'المبادرة والإبداع',               desc:'الاقتراح والابتكار في مجال الخدمة'},
+  {label:'التواصل مع المخدومين',           desc:'بناء العلاقات ورعاية من يخدمهم'},
+  {label:'الاستعداد للتعلم',               desc:'الانفتاح على التدريب والتطوير المستمر'},
+  {label:'الحضور الروحي والمثال',          desc:'الحياة الروحية الشخصية وأثرها'},
+  {label:'تحقيق أهداف الخدمة',            desc:'النتائج الفعلية والأثر القابل للقياس'},
+];
+const evalRatings = new Array(9).fill(0);
+let phasesData = [];
+
+// ═══════════════════════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════════════════════
+function goTo(n){
+  document.querySelectorAll('.section').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('.nav-step').forEach((s,i)=>{
+    s.classList.toggle('active',i===n);
+    if(i<n) s.classList.add('done'); else s.classList.remove('done');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ═══════════════════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════════════════
+function showToast(msg,dur=2500){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),dur);
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP 1: SWOT
+// ═══════════════════════════════════════════════════════════
+function addSwot(q){
+  const inp=document.getElementById('inp-'+q);
+  const text=inp.value.trim();
+  if(!text){inp.focus();return;}
+  swotData[q].push(text);
+  renderSwot(q);
+  inp.value='';
+  inp.focus();
+  updateSwotSummary();
+  showToast('✅ تمت الإضافة بنجاح');
+}
+
+function renderSwot(q){
+  const ul=document.getElementById('swot-'+q);
+  ul.innerHTML=swotData[q].map((item,i)=>`
+    <li class="swot-item">
+      <span style="flex:1">${item}</span>
+      <button class="remove-btn" onclick="removeSwot('${q}',${i});event.stopPropagation()">✕</button>
+    </li>`).join('');
+  document.getElementById('cnt-'+q).textContent=swotData[q].length;
+}
+
+function removeSwot(q,i){
+  swotData[q].splice(i,1);renderSwot(q);updateSwotSummary();
+}
+
+function updateSwotSummary(){
+  const total=Object.values(swotData).reduce((a,b)=>a+b.length,0);
+  const bars=document.getElementById('swotBarChart');
+  const labels={s:'نقاط القوة',o:'الفرص',w:'نقاط الضعف',t:'التهديدات'};
+  const colors={s:'var(--green)',o:'var(--teal)',w:'var(--brown)',t:'var(--red)'};
+  bars.innerHTML=Object.entries(swotData).map(([q,items])=>{
+    const pct=total?Math.round(items.length/total*100):0;
+    return `<div class="bar-row">
+      <div class="bar-label">${labels[q]}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${colors[q]}"></div></div>
+      <div class="bar-pct">${items.length} نقطة</div>
+    </div>`;
+  }).join('');
+}
+
+function loadSwotSamples(){
+  swotData.s=['إيمان راسخ وقيادة مخلصة','شركة دافئة وعلاقات حقيقية','موقع جغرافي استراتيجي','تراث روحي عريق'];
+  swotData.o=['جيل شاب يبحث عن معنى','الفضاء الرقمي لإعلان الإنجيل','احتياجات اجتماعية ملموسة','إمكانية شراكات مع كنائس أخرى'];
+  swotData.w=['غياب خطة استراتيجية مكتوبة','محدودية الموارد المالية','ضعف التواصل الرقمي','قلة الخدام المتدربين'];
+  swotData.t=['التحولات الاجتماعية والعلمانية','منافسة وسائل الترفيه','تراجع الحضور بعد الجائحة'];
+  ['s','o','w','t'].forEach(q=>renderSwot(q));
+  updateSwotSummary();
+  showToast('📋 تم تحميل الأمثلة');
+}
+
+function exportSwot(){window.print();showToast('🖨️ جارٍ الطباعة...');}
+function printSwot(){window.print();}
+
+// ═══════════════════════════════════════════════════════════
+// APP 2: VISION BUILDER
+// ═══════════════════════════════════════════════════════════
+const defaultValues=['المسيح المحور','الكتاب المقدس','الشركة الحقيقية','خدمة الآخرين','الامتياز','التجديد','الصلاة','التلمذة','الوحدة','الإيمان الحي'];
+
+function initValues(){
+  const g=document.getElementById('valuesGrid');
+  g.innerHTML=defaultValues.map(v=>`
+    <div class="val-chip-btn" data-val="${v}" onclick="toggleValue('${v}',this)" style="cursor:pointer;padding:7px 14px;border-radius:50px;font-size:.82rem;font-weight:600;border:2px solid var(--border);background:var(--cream);color:var(--muted);transition:all .2s">
+      ${v}
+    </div>`).join('');
+}
+
+function toggleValue(v,el){
+  if(selectedValues.has(v)){selectedValues.delete(v);el.style.background='var(--cream)';el.style.color='var(--muted)';el.style.borderColor='var(--border)';}
+  else{selectedValues.add(v);el.style.background='var(--navy)';el.style.color='var(--gold)';el.style.borderColor='var(--navy)';}
+  buildVision();
+}
+
+function addCustomValue(){
+  const inp=document.getElementById('customValue');
+  const v=inp.value.trim();
+  if(!v)return;
+  selectedValues.add(v);
+  const g=document.getElementById('valuesGrid');
+  const el=document.createElement('div');
+  el.className='val-chip-btn';el.setAttribute('data-val',v);
+  el.style.cssText='cursor:pointer;padding:7px 14px;border-radius:50px;font-size:.82rem;font-weight:600;border:2px solid var(--navy);background:var(--navy);color:var(--gold);transition:all .2s';
+  el.textContent=v;
+  el.onclick=()=>toggleValue(v,el);
+  g.appendChild(el);
+  inp.value='';
+  buildVision();
+  showToast('✅ تمت إضافة القيمة');
+}
+
+function buildVision(){
+  const name=document.getElementById('churchName').value||'كنيستنا';
+  const who=document.getElementById('who').value;
+  const whatB=document.getElementById('whatBecome').value;
+  const uni=document.getElementById('unique').value;
+  const why=document.getElementById('why').value;
+  const how=document.getElementById('how').value;
+
+  // Vision
+  let vision='أن تكون ';
+  if(name) vision+=name+' ';
+  if(whatB) vision+=whatB;
+  else vision+='كنيسةً تُحوّل المجتمع بمحبة المسيح';
+  if(who) vision+=`، تخدم ${who}`;
+  if(uni) vision+=`، من خلال ${uni}`;
+  vision+='.';
+
+  // Mission
+  let mission='';
+  if(why) mission+=why;
+  else mission+='إعلان إنجيل المسيح وتلمذة الأجيال';
+  if(how) mission+=` من خلال ${how}`;
+  mission+='.';
+
+  document.getElementById('visionOut').textContent=vision;
+  document.getElementById('missionOut').textContent=mission;
+
+  // Values chips
+  const vout=document.getElementById('valuesOut');
+  vout.innerHTML=[...selectedValues].map(v=>`<span class="val-chip">${v}</span>`).join('');
+
+  // ID card
+  document.getElementById('id-name').textContent=name;
+  document.getElementById('id-vision').textContent=vision;
+  document.getElementById('id-mission').textContent=mission;
+  document.getElementById('id-values').textContent=[...selectedValues].join(' • ')||'—';
+
+  // Completion
+  const fields=[name!=='كنيستنا',!!who,!!whatB,!!uni,!!why,!!how,selectedValues.size>=3];
+  const done=fields.filter(Boolean).length;
+  const pct=Math.round(done/fields.length*100);
+  document.getElementById('visionPct').textContent=pct+'%';
+  document.getElementById('visionBar').style.width=pct+'%';
+
+  const labels=['اسم الكنيسة','الجمهور المستهدف','الصورة المستقبلية','العنصر الفريد','السبب الجوهري','أسلوب الخدمة','القيم (3+)'];
+  document.getElementById('visionChecklist').innerHTML=fields.map((f,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:5px 0;font-size:.82rem;color:${f?'var(--green)':'var(--muted)'}">
+      <span>${f?'✅':'⭕'}</span><span>${labels[i]}</span>
+    </div>`).join('');
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP 3: KPI DASHBOARD
+// ═══════════════════════════════════════════════════════════
+const kpiDefs=[
+  {label:'متوسط الحضور الأسبوعي',  icon:'👥',  color:'#1C2B5A', current:0, target:200, unit:'مصلٍّ'},
+  {label:'قرارات الإيمان الشهرية', icon:'✝️',   color:'#2A7F8F', current:0, target:10,  unit:'قرار'},
+  {label:'التبرعات مقابل الميزانية',icon:'💰',  color:'#7B3F00', current:0, target:100, unit:'%'},
+  {label:'خدام ومتطوعون',           icon:'🙌',  color:'#1E6B1E', current:0, target:50,  unit:'خادم'},
+  {label:'مجموعات صغيرة نشطة',      icon:'👨‍👩‍👧', color:'#2E5FA0', current:0, target:12,  unit:'مجموعة'},
+  {label:'مؤشر الرضا (NPS)',        icon:'⭐',  color:'#8B1A1A', current:0, target:70,  unit:'نقطة'},
+];
+
+function initKPI(){
+  const g=document.getElementById('kpiGrid');
+  g.innerHTML=kpiDefs.map((k,i)=>`
+    <div class="kpi-card" onclick="editKPI(${i})">
+      <div class="kpi-header">
+        <div class="kpi-icon" style="background:${k.color}20">${k.icon}</div>
+        <div class="kpi-label">${k.label}</div>
+      </div>
+      <div class="kpi-value-row">
+        <div class="kpi-current" id="kpi-cur-${i}" style="color:${k.color}">${k.current}</div>
+        <div class="kpi-target">/ هدف: <span id="kpi-tgt-${i}">${k.target}</span> ${k.unit}</div>
+      </div>
+      <div class="kpi-bar-track">
+        <div class="kpi-bar" id="kpi-bar-${i}" style="width:0%;background:${k.color}"></div>
+      </div>
+      <div class="kpi-pct" id="kpi-pct-${i}">0%</div>
+      <div class="kpi-controls">
+        <button class="kpi-btn" onclick="adjustKPI(${i},-1);event.stopPropagation()">－</button>
+        <input type="number" class="kpi-input-wrap" id="kpi-inp-${i}" value="${k.current}" min="0" 
+          style="border:1.5px solid var(--border);border-radius:6px;padding:5px;text-align:center;font-weight:700;font-size:.9rem"
+          onclick="event.stopPropagation()" onchange="setKPI(${i},this.value)">
+        <button class="kpi-btn" onclick="adjustKPI(${i},1);event.stopPropagation()">＋</button>
+      </div>
+    </div>`).join('');
+  setTimeout(()=>kpiDefs.forEach((_,i)=>updateKPIBar(i)),200);
+  initWheel();
+}
+
+function adjustKPI(i,d){
+  kpiDefs[i].current=Math.max(0,kpiDefs[i].current+d);
+  document.getElementById('kpi-inp-'+i).value=kpiDefs[i].current;
+  updateKPIBar(i);updateOverall();
+}
+function setKPI(i,v){
+  kpiDefs[i].current=Math.max(0,+v||0);
+  updateKPIBar(i);updateOverall();
+}
+function updateKPIBar(i){
+  const k=kpiDefs[i];
+  const pct=Math.min(100,Math.round(k.current/k.target*100));
+  document.getElementById('kpi-cur-'+i).textContent=k.current;
+  document.getElementById('kpi-bar-'+i).style.width=pct+'%';
+  document.getElementById('kpi-pct-'+i).textContent=pct+'%';
+}
+function updateOverall(){
+  const avg=Math.round(kpiDefs.reduce((a,k)=>a+Math.min(100,k.current/k.target*100),0)/kpiDefs.length);
+  document.getElementById('overallScore').textContent=avg+'%';
+  const levels=['🔴 يحتاج تطوير','🟡 في طريق التحسن','🟢 أداء جيد','🌟 أداء متميز'];
+  document.getElementById('overallLabel').textContent=levels[avg<40?0:avg<70?1:avg<90?2:3];
+  document.getElementById('overallBar').innerHTML=`
+    <div class="bar-row">
+      <div class="bar-label" style="color:rgba(255,255,255,.8);width:auto">الإنجاز</div>
+      <div class="bar-track" style="background:rgba(255,255,255,.15)">
+        <div class="bar-fill" style="width:${avg}%;background:linear-gradient(90deg,var(--gold),var(--gold-lite))"></div>
+      </div>
+    </div>`;
+}
+function resetKPIs(){kpiDefs.forEach((k,i)=>{k.current=0;document.getElementById('kpi-inp-'+i).value=0;updateKPIBar(i);});updateOverall();}
+
+// Wheel
+const wheelDimensions=[
+  {name:'الرؤية والاستراتيجية',color:'#1C2B5A'},
+  {name:'العبادة والصلاة',      color:'#2A7F8F'},
+  {name:'التلمذة والتعليم',     color:'#1E6B1E'},
+  {name:'الخدمة المجتمعية',     color:'#7B3F00'},
+  {name:'المجموعات الصغيرة',    color:'#2E5FA0'},
+  {name:'الشركة والعلاقات',     color:'#8B1A1A'},
+  {name:'القيادة والكوادر',      color:'#4A0080'},
+  {name:'الموارد والإدارة',      color:'#C9A84C'},
+];
+const wheelScores=new Array(8).fill(5);
+
+function initWheel(){
+  const leg=document.getElementById('wheelLegend');
+  leg.innerHTML=wheelDimensions.map((d,i)=>`
+    <div class="wheel-item" id="wl-${i}">
+      <div class="wheel-dot" style="background:${d.color}"></div>
+      <div class="wheel-name">${d.name}</div>
+      <div class="wheel-score" id="ws-${i}">${wheelScores[i]}/10</div>
+      <input type="range" min="1" max="10" value="${wheelScores[i]}" class="wheel-slider"
+        oninput="setWheel(${i},this.value)" onclick="event.stopPropagation()">
+    </div>`).join('');
+  drawWheel();
+}
+function setWheel(i,v){
+  wheelScores[i]=+v;
+  document.getElementById('ws-'+i).textContent=v+'/10';
+  drawWheel();
+}
+function drawWheel(){
+  const c=document.getElementById('wheelCanvas');
+  const ctx=c.getContext('2d');
+  const cx=140,cy=140,R=120,n=wheelDimensions.length;
+  ctx.clearRect(0,0,280,280);
+  // Grid circles
+  for(let r=1;r<=5;r++){
+    ctx.beginPath();ctx.arc(cx,cy,R*r/5,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(0,0,0,${r===5?.2:.06})`;ctx.lineWidth=r===5?1.5:.7;ctx.stroke();
+  }
+  // Spokes
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+    ctx.strokeStyle='rgba(0,0,0,.1)';ctx.lineWidth=1;ctx.stroke();
+  }
+  // Data polygon
+  ctx.beginPath();
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    const r=R*wheelScores[i]/10;
+    const x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);
+    i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+  }
+  ctx.closePath();
+  ctx.fillStyle='rgba(201,168,76,.25)';ctx.fill();
+  ctx.strokeStyle='#C9A84C';ctx.lineWidth=2.5;ctx.stroke();
+  // Dots
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    const r=R*wheelScores[i]/10;
+    const x=cx+r*Math.cos(a),y=cy+r*Math.sin(a);
+    ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);
+    ctx.fillStyle=wheelDimensions[i].color;ctx.fill();
+    ctx.strokeStyle='white';ctx.lineWidth=2;ctx.stroke();
+  }
+  // Labels
+  ctx.font='bold 9px Tajawal, sans-serif';ctx.fillStyle='#1C2B5A';ctx.textAlign='center';
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    const x=cx+(R+18)*Math.cos(a),y=cy+(R+18)*Math.sin(a);
+    ctx.fillText(wheelDimensions[i].name.split('و')[0],x,y);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP 4: PRIORITY MATRIX
+// ═══════════════════════════════════════════════════════════
+const initColors=['#1C2B5A','#2A7F8F','#1E6B1E','#8B1A1A','#7B3F00','#2E5FA0','#4A0080','#C9A84C'];
+let selectedInit=-1;
+
+function addInitiative(){
+  const name=document.getElementById('initName').value.trim();
+  if(!name){document.getElementById('initName').focus();showToast('⚠️ أدخل اسم المبادرة');return;}
+  const imp=+document.getElementById('initImp').value;
+  const urg=+document.getElementById('initUrg').value;
+  initiatives.push({name,imp,urg,color:initColors[initiatives.length%initColors.length]});
+  document.getElementById('initName').value='';
+  drawMatrix();renderInitList();
+  showToast('✅ تمت إضافة المبادرة');
+}
+
+function drawMatrix(){
+  const c=document.getElementById('matrixCanvas');
+  const ctx=c.getContext('2d');
+  const W=c.width,H=c.height,PAD=50;
+  ctx.clearRect(0,0,W,H);
+  // Background quadrants
+  const quads=[
+    {x:PAD,y:PAD,w:(W-PAD*2)/2,h:(H-PAD*2)/2,bg:'rgba(201,168,76,.08)',label:'جدوِل',lc:'#7B3F00'},
+    {x:PAD+(W-PAD*2)/2,y:PAD,w:(W-PAD*2)/2,h:(H-PAD*2)/2,bg:'rgba(30,107,30,.1)',label:'افعل الآن',lc:'#1E6B1E'},
+    {x:PAD,y:PAD+(H-PAD*2)/2,w:(W-PAD*2)/2,h:(H-PAD*2)/2,bg:'rgba(139,26,26,.08)',label:'أزِل',lc:'#8B1A1A'},
+    {x:PAD+(W-PAD*2)/2,y:PAD+(H-PAD*2)/2,w:(W-PAD*2)/2,h:(H-PAD*2)/2,bg:'rgba(42,127,143,.1)',label:'فوّض',lc:'#2A7F8F'},
+  ];
+  quads.forEach(q=>{
+    ctx.fillStyle=q.bg;ctx.fillRect(q.x,q.y,q.w,q.h);
+    ctx.font='bold 13px Tajawal';ctx.fillStyle=q.lc;ctx.textAlign='center';
+    ctx.fillText(q.label,q.x+q.w/2,q.y+20);
+  });
+  // Axes
+  ctx.strokeStyle='#1C2B5A';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(PAD,PAD);ctx.lineTo(PAD,H-PAD);ctx.lineTo(W-PAD,H-PAD);ctx.stroke();
+  // Center lines
+  ctx.strokeStyle='rgba(0,0,0,.15)';ctx.lineWidth=1;ctx.setLineDash([5,5]);
+  ctx.beginPath();ctx.moveTo(W/2,PAD);ctx.lineTo(W/2,H-PAD);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(PAD,H/2);ctx.lineTo(W-PAD,H/2);ctx.stroke();
+  ctx.setLineDash([]);
+  // Axis labels
+  ctx.font='11px Tajawal';ctx.fillStyle='#4A5568';ctx.textAlign='center';
+  ctx.fillText('الأهمية →',W/2,H-PAD+22);
+  ctx.save();ctx.translate(PAD-30,H/2);ctx.rotate(-Math.PI/2);
+  ctx.fillText('الإلحاحية →',0,0);ctx.restore();
+  // Plot initiatives
+  initiatives.forEach((init,idx)=>{
+    const x=PAD+(init.imp/10)*(W-PAD*2);
+    const y=H-PAD-(init.urg/10)*(H-PAD*2);
+    // Circle
+    ctx.beginPath();ctx.arc(x,y,18,0,Math.PI*2);
+    ctx.fillStyle=init.color;ctx.fill();
+    ctx.strokeStyle='white';ctx.lineWidth=2.5;ctx.stroke();
+    // Number
+    ctx.font='bold 11px Tajawal';ctx.fillStyle='white';ctx.textAlign='center';
+    ctx.fillText(idx+1,x,y+4);
+    // Label
+    ctx.font='9px Tajawal';ctx.fillStyle='#1C2B5A';
+    const lbl=init.name.length>8?init.name.slice(0,8)+'…':init.name;
+    ctx.fillText(lbl,x,y-24);
+  });
+}
+
+function renderInitList(){
+  const list=document.getElementById('initList');
+  if(!initiatives.length){list.innerHTML='<p style="text-align:center;color:var(--muted);font-size:.85rem;padding:20px">أضف مبادراتك من النموذج أعلاه</p>';return;}
+  const getQ=(init)=>{
+    if(init.imp>=5&&init.urg>=5)return{label:'افعل الآن',c:'var(--green)'};
+    if(init.imp>=5&&init.urg<5)return{label:'جدوِل',c:'var(--brown)'};
+    if(init.imp<5&&init.urg>=5)return{label:'فوّض',c:'var(--teal)'};
+    return{label:'أزِل',c:'var(--red)'};
+  };
+  list.innerHTML=initiatives.map((init,i)=>{
+    const q=getQ(init);
+    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;margin-bottom:6px;border:1.5px solid var(--border);background:var(--cream)">
+      <div style="width:28px;height:28px;border-radius:50%;background:${init.color};color:white;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0">${i+1}</div>
+      <div style="flex:1;font-size:.85rem;font-weight:600;color:var(--navy)">${init.name}</div>
+      <div style="font-size:.75rem;font-weight:700;color:${q.c};padding:2px 8px;border-radius:4px;background:${q.c}15">${q.label}</div>
+      <button onclick="removeInit(${i})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;padding:0 4px">✕</button>
+    </div>`;
+  }).join('');
+}
+
+function removeInit(i){initiatives.splice(i,1);drawMatrix();renderInitList();}
+
+function loadInitSamples(){
+  const samples=[
+    {name:'برنامج التلمذة',imp:9,urg:8},{name:'الحضور الرقمي',imp:8,urg:6},
+    {name:'تدريب القادة',imp:9,urg:7},{name:'تجديد الموقع',imp:4,urg:3},
+    {name:'مؤتمر سنوي',imp:7,urg:9},{name:'إدارة التبرعات',imp:6,urg:5},
+  ];
+  samples.forEach((s,i)=>initiatives.push({...s,color:initColors[i%initColors.length]}));
+  drawMatrix();renderInitList();showToast('📋 تم تحميل الأمثلة');
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP 5: SERVANT EVALUATION
+// ═══════════════════════════════════════════════════════════
+function initEval(){
+  const g=document.getElementById('evalGrid');
+  g.innerHTML=evalCriteria.map((c,i)=>`
+    <div class="eval-row">
+      <div class="eval-criterion">
+        ${c.label}
+        <p>${c.desc}</p>
+      </div>
+      <div class="stars" id="stars-${i}">
+        ${[5,4,3,2,1].map(s=>`<span class="star" onclick="rate(${i},${s})" onmouseover="hoverStar(${i},${s})" onmouseout="unhoverStar(${i})" title="${s} نجوم">★</span>`).join('')}
+      </div>
+    </div>`).join('');
+  document.getElementById('servDate').value=new Date().toISOString().split('T')[0];
+}
+
+function hoverStar(ci,v){
+  const stars=document.querySelectorAll(`#stars-${ci} .star`);
+  stars.forEach((s,idx)=>s.classList.toggle('hover',5-idx<=v));
+}
+function unhoverStar(ci){
+  document.querySelectorAll(`#stars-${ci} .star`).forEach(s=>s.classList.remove('hover'));
+  renderStars(ci);
+}
+function rate(ci,v){evalRatings[ci]=v;renderStars(ci);updateEvalScore();}
+function renderStars(ci){
+  document.querySelectorAll(`#stars-${ci} .star`).forEach((s,idx)=>{
+    s.classList.toggle('active',5-idx<=evalRatings[ci]);
+  });
+}
+
+function updateEvalScore(){
+  const total=evalRatings.reduce((a,b)=>a+b,0);
+  const max=evalCriteria.length*5;
+  const pct=Math.round(total/max*100);
+  // Ring
+  document.getElementById('ringNum').textContent=total;
+  const offset=251.2*(1-total/max);
+  document.getElementById('ringFill').style.strokeDashoffset=offset;
+  const col=total<18?'#8B1A1A':total<27?'#7B3F00':total<36?'#2A7F8F':'#1E6B1E';
+  document.getElementById('ringFill').style.stroke=col;
+  document.getElementById('servantPct').textContent=pct+'%';
+  const levels=[
+    {min:0, label:'يحتاج تطوير كبير', desc:'نوصي بوضع خطة تطوير شاملة مع إشراف مستمر ودعم منتظم من قيادة الكنيسة.'},
+    {min:40,label:'في طريق النمو',     desc:'الخادم يُظهر إمكانات واعدة. يحتاج تدريباً موجّهاً وتشجيعاً مستمراً.'},
+    {min:60,label:'خادم جيد',          desc:'مستوى طيب من الأداء. يُمكن تكليفه بمسؤوليات إضافية مع المتابعة.'},
+    {min:80,label:'خادم متميز ⭐',     desc:'أداء عالٍ ومثالٌ يُحتذى. يُمكن تأهيله لمواقع قيادية أوسع.'},
+  ];
+  const lvl=levels.filter(l=>pct>=l.min).pop();
+  document.getElementById('servantLevel').textContent=lvl.label;
+  const res=document.getElementById('evalResult');
+  res.classList.add('visible');
+  document.getElementById('resultLevel').textContent='نتيجة التقييم: '+lvl.label;
+  document.getElementById('resultDesc').textContent=lvl.desc;
+  // Bars
+  const bars=document.getElementById('evalBars');
+  bars.innerHTML=evalCriteria.map((c,i)=>
+    `<div class="bar-row">
+      <div class="bar-label" style="width:160px;font-size:.78rem">${c.label}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${evalRatings[i]/5*100}%;background:${col}"></div></div>
+      <div class="bar-pct">${evalRatings[i]}/5</div>
+    </div>`).join('');
+  drawEvalRadar(col);
+}
+
+function updateServantInfo(){}
+
+function drawEvalRadar(col='#1C2B5A'){
+  const c=document.getElementById('evalRadar');
+  const ctx=c.getContext('2d');
+  const cx=120,cy=120,R=90,n=evalCriteria.length;
+  ctx.clearRect(0,0,240,240);
+  // Grid
+  for(let r=1;r<=5;r++){
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const a=(i/n)*Math.PI*2-Math.PI/2;
+      const x=cx+R*r/5*Math.cos(a),y=cy+R*r/5*Math.sin(a);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.closePath();ctx.strokeStyle=`rgba(0,0,0,${r===5?.15:.06})`;ctx.lineWidth=r===5?1.5:.7;ctx.stroke();
+  }
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+    ctx.strokeStyle='rgba(0,0,0,.08)';ctx.lineWidth=1;ctx.stroke();
+  }
+  // Data
+  ctx.beginPath();
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    const r=R*evalRatings[i]/5;
+    i===0?ctx.moveTo(cx+r*Math.cos(a),cy+r*Math.sin(a)):ctx.lineTo(cx+r*Math.cos(a),cy+r*Math.sin(a));
+  }
+  ctx.closePath();ctx.fillStyle=col+'30';ctx.fill();ctx.strokeStyle=col;ctx.lineWidth=2;ctx.stroke();
+  // Dots
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2-Math.PI/2;
+    const r=R*evalRatings[i]/5;
+    ctx.beginPath();ctx.arc(cx+r*Math.cos(a),cy+r*Math.sin(a),4,0,Math.PI*2);
+    ctx.fillStyle=col;ctx.fill();ctx.strokeStyle='white';ctx.lineWidth=1.5;ctx.stroke();
+  }
+}
+
+function resetEval(){
+  evalRatings.fill(0);
+  evalCriteria.forEach((_,i)=>renderStars(i));
+  document.getElementById('ringFill').style.strokeDashoffset=251.2;
+  document.getElementById('ringNum').textContent='0';
+  document.getElementById('servantPct').textContent='0%';
+  document.getElementById('servantLevel').textContent='قيّم الخادم';
+  document.getElementById('evalBars').innerHTML='';
+  document.getElementById('evalResult').classList.remove('visible');
+  drawEvalRadar();
+}
+
+// ═══════════════════════════════════════════════════════════
+// APP 6: 90 DAY PLAN
+// ═══════════════════════════════════════════════════════════
+const phaseConfig=[
+  {label:'المرحلة الأولى',days:'الأيام 1-30',color:'var(--navy)',desc:'الاكتشاف والتأسيس',id:'p1'},
+  {label:'المرحلة الثانية',days:'الأيام 31-60',color:'var(--teal)',desc:'التطوير والبناء',id:'p2'},
+  {label:'المرحلة الثالثة',days:'الأيام 61-90',color:'var(--green)',desc:'الإطلاق والانتشار',id:'p3'},
+];
+phasesData=[{tasks:[]},{tasks:[]},{tasks:[]}];
+
+function initPlan(){
+  const g=document.getElementById('phasesGrid');
+  g.innerHTML=phaseConfig.map((ph,pi)=>`
+    <div class="phase-card">
+      <div class="phase-header" style="background:${ph.color}">
+        <h3>${ph.label}</h3>
+        <p>${ph.days} — ${ph.desc}</p>
+      </div>
+      <div class="phase-body">
+        <div id="tasks-${pi}"></div>
+        <div class="add-task-form">
+          <input type="text" id="task-inp-${pi}" placeholder="أضف مهمة..." onkeydown="if(event.key==='Enter')addTask(${pi})">
+          <button onclick="addTask(${pi})">+</button>
+        </div>
+      </div>
+    </div>`).join('');
+  document.getElementById('planStart').value=new Date().toISOString().split('T')[0];
+  renderAllTasks();
+}
+
+function addTask(pi){
+  const inp=document.getElementById('task-inp-'+pi);
+  const text=inp.value.trim();
+  if(!text)return;
+  phasesData[pi].tasks.push({text,done:false});
+  inp.value='';renderTasks(pi);updateProgress();
+  showToast('✅ تمت إضافة المهمة');
+}
+
+function toggleTask(pi,ti){
+  phasesData[pi].tasks[ti].done=!phasesData[pi].tasks[ti].done;
+  renderTasks(pi);updateProgress();
+}
+
+function renderTasks(pi){
+  const cont=document.getElementById('tasks-'+pi);
+  if(!cont)return;
+  cont.innerHTML=phasesData[pi].tasks.map((t,ti)=>`
+    <div class="phase-task ${t.done?'done':''}" onclick="toggleTask(${pi},${ti})">
+      <div class="task-check">${t.done?'✓':''}</div>
+      <div class="task-text">${t.text}</div>
+      <button onclick="removeTask(${pi},${ti});event.stopPropagation()" style="background:none;border:none;color:var(--muted);cursor:pointer;padding:0 4px;font-size:.9rem">✕</button>
+    </div>`).join('');
+}
+
+function removeTask(pi,ti){phasesData[pi].tasks.splice(ti,1);renderTasks(pi);updateProgress();}
+function renderAllTasks(){phasesData.forEach((_,i)=>renderTasks(i));}
+
+function updateProgress(){
+  let total=0,done=0;
+  phasesData.forEach((ph,i)=>{
+    const d=ph.tasks.filter(t=>t.done).length;
+    const t=ph.tasks.length;
+    document.getElementById('prog'+(i+1)).textContent=`${d}/${t}`;
+    total+=t;done+=d;
+  });
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('totalBar').style.width=pct+'%';
+  document.getElementById('totalPct').textContent=pct+'%';
+}
+
+function updatePlanHeader(){}
+
+function loadPlanSamples(){
+  phasesData[0].tasks=[
+    {text:'عقد اجتماع قيادي لمشاركة الرؤية',done:false},
+    {text:'إجراء تحليل SWOT مع الفريق',done:false},
+    {text:'تحديد 3 أهداف استراتيجية رئيسية',done:false},
+    {text:'تقييم الوضع المالي الحالي',done:false},
+    {text:'استطلاع رأي الأعضاء',done:false},
+  ];
+  phasesData[1].tasks=[
+    {text:'إطلاق برنامج التلمذة الأساسي',done:false},
+    {text:'تدريب فريق القيادة (ورشة يومية)',done:false},
+    {text:'إنشاء حضور رقمي فعّال',done:false},
+    {text:'تأسيس 3 مجموعات صغيرة',done:false},
+    {text:'وضع ميزانية تشغيلية واضحة',done:false},
+  ];
+  phasesData[2].tasks=[
+    {text:'إطلاق مبادرة مجتمعية خارجية',done:false},
+    {text:'تقييم الإنجازات وقياس المؤشرات',done:false},
+    {text:'الإعلان عن الخطة للجماعة كاملة',done:false},
+    {text:'تخطيط الحدث السنوي الكبير',done:false},
+    {text:'إعداد تقرير إنجازات ربع السنة',done:false},
+  ];
+  renderAllTasks();updateProgress();showToast('📋 تم تحميل نماذج الخطة');
+}
+
+function printAll(){window.print();}
+function printSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.style.display='block');
+  window.print();
+  document.querySelectorAll('.section').forEach((s,i)=>s.style.display=i===+document.querySelector('.section.active').id.slice(1)?'block':'none');
+}
+
+// ═══════════════════════════════════════════════════════════
+// INIT ALL
+// ═══════════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded',()=>{
+  initValues();
+  initKPI();
+  initEval();
+  initPlan();
+  drawMatrix();
+  // Load SWOT samples on first visit
+  // updateSwotSummary();
+  // Set today's date for eval
+  document.getElementById('servDate').value=new Date().toISOString().split('T')[0];
+  // Trigger initial KPI bar animation
+  setTimeout(()=>{
+    kpiDefs.forEach((_,i)=>updateKPIBar(i));
+    updateOverall();
+  },500);
+});
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FIREBASE — تسجيل المستخدمين وحفظ البيانات
+     ═══════════════════════════════════════════════════════════
+     قبل النشر، لازم تربط الملف بمشروع Firebase خاص بك (مجاني):
+
+     1) اذهب إلى https://console.firebase.google.com وأنشئ مشروعًا جديدًا.
+     2) من القائمة الجانبية: Build → Authentication → Get started
+        → فعّل طريقة "Email/Password".
+     3) من القائمة الجانبية: Build → Firestore Database → Create database
+        (اختر أي موقع قريب، وابدأ في "production mode").
+     4) من تبويب "Rules" داخل Firestore، استبدل القواعد بهذا النص ثم احفظ:
+          rules_version = '2';
+          service cloud.firestore {
+            match /databases/{database}/documents {
+              match /users/{userId} {
+                allow read, write: if request.auth != null && request.auth.uid == userId;
+              }
+            }
+          }
+     5) من ⚙️ Project settings → عمومي → "Your apps" → اختر أيقونة الويب </>
+        وأنشئ تطبيق ويب جديد، سينسخ لك إعدادات تشبه الكائن أدناه.
+     6) الصق إعداداتك في firebaseConfig بدلًا من القيم التجريبية بالأسفل، واحفظ الملف.
+     ═══════════════════════════════════════════════════════════ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+// ضع هنا بيانات مشروعك من Firebase Console (الخطوة 5 أعلاه)
+const firebaseConfig = {
+  apiKey: "AIzaSyD8P8lnNlpeAxizgDn4vQnXK_CJHYcyUQM",
+  authDomain: "vision2fruit.firebaseapp.com",
+  projectId: "vision2fruit",
+  storageBucket: "vision2fruit.firebasestorage.app",
+  messagingSenderId: "8562721771",
+  appId: "1:8562721771:web:fc634dc3f6afd7691a4fae",
+  measurementId: "G-DLM37WC2CK"
+};
+
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// ═══════════════════════════════════════════════════════════
+// AUTH UI HELPERS
+// ═══════════════════════════════════════════════════════════
+function switchAuthTab(tab){
+  const isLogin = tab === 'login';
+  document.getElementById('tabLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+  document.getElementById('loginForm').style.display = isLogin ? 'block' : 'none';
+  document.getElementById('registerForm').style.display = isLogin ? 'none' : 'block';
+  clearAuthError();
+}
+function showAuthError(msg){
+  const el = document.getElementById('authError');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+function clearAuthError(){
+  const el = document.getElementById('authError');
+  el.textContent = '';
+  el.classList.remove('show');
+}
+function friendlyAuthError(err){
+  const map = {
+    'auth/email-already-in-use': 'هذا البريد الإلكتروني مُسجَّل بالفعل. جرّب تسجيل الدخول.',
+    'auth/invalid-email': 'صيغة البريد الإلكتروني غير صحيحة.',
+    'auth/weak-password': 'كلمة المرور ضعيفة، استخدم 6 أحرف على الأقل.',
+    'auth/wrong-password': 'كلمة المرور غير صحيحة.',
+    'auth/user-not-found': 'لا يوجد حساب بهذا البريد الإلكتروني.',
+    'auth/invalid-credential': 'البريد الإلكتروني أو كلمة المرور غير صحيحة.',
+    'auth/too-many-requests': 'محاولات كثيرة متكررة، حاول لاحقًا.',
+    'auth/network-request-failed': 'تحقق من اتصال الإنترنت وحاول مرة أخرى.',
+  };
+  return map[err.code] || ('حدث خطأ: ' + err.message);
+}
+
+// ═══════════════════════════════════════════════════════════
+// REGISTER / LOGIN / LOGOUT
+// ═══════════════════════════════════════════════════════════
+function handleRegister(){
+  clearAuthError();
+  const orgName = document.getElementById('regOrgName').value.trim();
+  const orgType = document.getElementById('regOrgType').value;
+  const email   = document.getElementById('regEmail').value.trim();
+  const pass    = document.getElementById('regPassword').value;
+  const pass2   = document.getElementById('regPassword2').value;
+
+  if(!orgName || !email || !pass){ showAuthError('من فضلك أكمل جميع الحقول المطلوبة.'); return; }
+  if(pass.length < 6){ showAuthError('كلمة المرور يجب أن تكون 6 أحرف على الأقل.'); return; }
+  if(pass !== pass2){ showAuthError('كلمتا المرور غير متطابقتين.'); return; }
+
+  auth.createUserWithEmailAndPassword(email, pass)
+    .then(cred => db.collection('users').doc(cred.user.uid).set({
+        orgName, orgType, email, createdAt: new Date().toISOString(),
+      }))
+    .catch(err => showAuthError(friendlyAuthError(err)));
+}
+
+function handleLogin(){
+  clearAuthError();
+  const email = document.getElementById('loginEmail').value.trim();
+  const pass  = document.getElementById('loginPassword').value;
+  if(!email || !pass){ showAuthError('من فضلك أدخل البريد الإلكتروني وكلمة المرور.'); return; }
+  auth.signInWithEmailAndPassword(email, pass)
+    .catch(err => showAuthError(friendlyAuthError(err)));
+}
+
+function handleLogout(){
+  auth.signOut().then(()=>location.reload());
+}
+
+function handleForgotPassword(){
+  const email = document.getElementById('loginEmail').value.trim();
+  if(!email){ showAuthError('اكتب بريدك الإلكتروني أولًا في الحقل أعلاه، ثم اضغط "نسيت كلمة المرور؟" مرة أخرى.'); return; }
+  auth.sendPasswordResetEmail(email)
+    .then(()=> showAuthError('✅ تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني.'))
+    .catch(err => showAuthError(friendlyAuthError(err)));
+}
+
+// ═══════════════════════════════════════════════════════════
+// SAVE PROGRESS
+// ═══════════════════════════════════════════════════════════
+function gatherState(){
+  return {
+    swot: swotData,
+    visionInputs: {
+      churchName: document.getElementById('churchName').value,
+      who: document.getElementById('who').value,
+      whatBecome: document.getElementById('whatBecome').value,
+      unique: document.getElementById('unique').value,
+      why: document.getElementById('why').value,
+      how: document.getElementById('how').value,
+    },
+    selectedValues: [...selectedValues],
+    kpiCurrents: kpiDefs.map(k=>k.current),
+    kpiTargets: kpiDefs.map(k=>k.target),
+    wheelScores: [...wheelScores],
+    initiatives: initiatives.map(it=>({...it})),
+    evalRatings: [...evalRatings],
+    servantInfo: {
+      servName: document.getElementById('servName').value,
+      servMinistry: document.getElementById('servMinistry').value,
+      servYears: document.getElementById('servYears').value,
+      servDate: document.getElementById('servDate').value,
+    },
+    phasesData: phasesData.map(p=>({tasks: p.tasks.map(t=>({...t}))})),
+  };
+}
+
+function saveProgress(showMsg){
+  if(showMsg === undefined) showMsg = true;
+  const user = auth.currentUser;
+  if(!user) return;
+  const state = gatherState();
+  db.collection('users').doc(user.uid).set({
+      data: state, updatedAt: new Date().toISOString(),
+    }, {merge:true})
+    .then(()=>{
+      document.getElementById('lastSaved').textContent = 'آخر حفظ: ' + new Date().toLocaleTimeString('ar-EG');
+      if(showMsg) showToast('💾 تم حفظ التقدم بنجاح');
+    })
+    .catch(err=>{ console.error(err); if(showMsg) showToast('⚠️ حدث خطأ أثناء الحفظ'); });
+}
+
+// ═══════════════════════════════════════════════════════════
+// LOAD / APPLY PROGRESS
+// ═══════════════════════════════════════════════════════════
+function applyState(data){
+  if(!data) return;
+
+  // SWOT
+  if(data.swot){
+    Object.assign(swotData, data.swot);
+    ['s','o','w','t'].forEach(q=>renderSwot(q));
+    updateSwotSummary();
+  }
+
+  // Vision/Mission inputs
+  if(data.visionInputs){
+    const vi = data.visionInputs;
+    document.getElementById('churchName').value  = vi.churchName  || '';
+    document.getElementById('who').value          = vi.who         || '';
+    document.getElementById('whatBecome').value    = vi.whatBecome  || '';
+    document.getElementById('unique').value        = vi.unique      || '';
+    document.getElementById('why').value           = vi.why         || '';
+    document.getElementById('how').value           = vi.how         || '';
+  }
+
+  // Core values (rebuild chip grid, then mark + add custom)
+  if(data.selectedValues){
+    selectedValues.clear();
+    data.selectedValues.forEach(v=>selectedValues.add(v));
+    initValues();
+    document.querySelectorAll('#valuesGrid .val-chip-btn').forEach(el=>{
+      const v = el.getAttribute('data-val');
+      if(selectedValues.has(v)){
+        el.style.background='var(--navy)';el.style.color='var(--gold)';el.style.borderColor='var(--navy)';
+      }
+    });
+    data.selectedValues.filter(v=>!defaultValues.includes(v)).forEach(v=>{
+      const g = document.getElementById('valuesGrid');
+      const el = document.createElement('div');
+      el.className='val-chip-btn';el.setAttribute('data-val',v);
+      el.style.cssText='cursor:pointer;padding:7px 14px;border-radius:50px;font-size:.82rem;font-weight:600;border:2px solid var(--navy);background:var(--navy);color:var(--gold);transition:all .2s';
+      el.textContent=v;
+      el.onclick=()=>toggleValue(v,el);
+      g.appendChild(el);
+    });
+  }
+  buildVision();
+
+  // KPI dashboard
+  if(data.kpiCurrents){
+    data.kpiCurrents.forEach((v,i)=>{
+      if(kpiDefs[i]){
+        kpiDefs[i].current = v;
+        const inp = document.getElementById('kpi-inp-'+i);
+        if(inp) inp.value = v;
+      }
+    });
+  }
+  if(data.kpiTargets){
+    data.kpiTargets.forEach((v,i)=>{
+      if(kpiDefs[i]){
+        kpiDefs[i].target = v;
+        const t = document.getElementById('kpi-tgt-'+i);
+        if(t) t.textContent = v;
+      }
+    });
+  }
+  kpiDefs.forEach((_,i)=>updateKPIBar(i));
+  updateOverall();
+
+  // Church wheel
+  if(data.wheelScores){
+    data.wheelScores.forEach((v,i)=>{ wheelScores[i] = v; });
+    initWheel();
+  }
+
+  // Priority matrix
+  if(data.initiatives){
+    initiatives.length = 0;
+    data.initiatives.forEach(it=>initiatives.push(it));
+    drawMatrix();renderInitList();
+  }
+
+  // Servant evaluation
+  if(data.evalRatings){
+    data.evalRatings.forEach((v,i)=>{ evalRatings[i] = v; });
+    evalCriteria.forEach((_,i)=>renderStars(i));
+    updateEvalScore();
+  }
+  if(data.servantInfo){
+    const si = data.servantInfo;
+    document.getElementById('servName').value     = si.servName     || '';
+    document.getElementById('servMinistry').value = si.servMinistry || '';
+    document.getElementById('servYears').value    = si.servYears    || '';
+    document.getElementById('servDate').value     = si.servDate     || new Date().toISOString().split('T')[0];
+  }
+
+  // 90-day plan
+  if(data.phasesData && data.phasesData.length === phasesData.length){
+    phasesData = data.phasesData;
+    renderAllTasks();updateProgress();
+  }
+}
+
+function loadProgress(uid){
+  db.collection('users').doc(uid).get()
+    .then(docSnap=>{
+      if(docSnap.exists){
+        const d = docSnap.data();
+        document.getElementById('userOrgName').textContent = d.orgName ? (d.orgType ? d.orgType+' — '+d.orgName : d.orgName) : '—';
+        if(d.data) applyState(d.data);
+        document.getElementById('lastSaved').textContent = d.updatedAt
+          ? 'آخر حفظ: ' + new Date(d.updatedAt).toLocaleTimeString('ar-EG')
+          : 'لم يتم الحفظ بعد';
+      }
+    })
+    .catch(err=>console.error(err));
+}
+
+// ═══════════════════════════════════════════════════════════
+// AUTH STATE OBSERVER
+// ═══════════════════════════════════════════════════════════
+auth.onAuthStateChanged(user=>{
+  if(user){
+    document.getElementById('authScreen').style.display = 'none';
+    document.getElementById('appRoot').style.display = 'block';
+    loadProgress(user.uid);
+  } else {
+    document.getElementById('appRoot').style.display = 'none';
+    document.getElementById('authScreen').style.display = 'flex';
+  }
+});
+
+// Best-effort autosave: on tab close and when switching between steps
+window.addEventListener('beforeunload', ()=>{ if(auth.currentUser) saveProgress(false); });
+const _originalGoTo = goTo;
+goTo = function(n){
+  if(auth.currentUser) saveProgress(false);
+  _originalGoTo(n);
+};
+</script>
+</body>
+</html>
