@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+
+<html dir="rtl" lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <title>من الرؤية إلى الثمر — التخطيط الاستراتيجي للكنيسة والخدمات الروحية</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&amp;display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
@@ -55,7 +56,7 @@ a{color:inherit;text-decoration:none}
 /* USER BAR */
 .user-bar{background:var(--navy);color:var(--white);position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.15)}
 .user-bar-inner{max-width:1100px;margin:0 auto;padding:7px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.user-bar-logo{height:36px;object-fit:contain}
+
 .user-bar-org{font-size:.84rem;font-weight:700;color:var(--gold)}
 .user-bar-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
 .user-bar-saved{font-size:.7rem;color:rgba(255,255,255,.55)}
@@ -67,8 +68,7 @@ a{color:inherit;text-decoration:none}
 /* HEADER */
 .site-header{background:linear-gradient(135deg,var(--navy),var(--navy-mid) 60%,var(--olive));padding:44px 20px 34px;text-align:center;position:relative;overflow:hidden}
 .site-header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");opacity:.5}
-.header-logo{margin-bottom:14px;position:relative;z-index:1}
-.header-logo img{height:110px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+
 .site-header h1{color:var(--white);margin-bottom:8px;position:relative;z-index:1}
 .site-header p{color:var(--gold-lite);font-size:.98rem;max-width:600px;margin:0 auto 18px;position:relative;z-index:1}
 .header-badges{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
@@ -95,7 +95,7 @@ a{color:inherit;text-decoration:none}
 .sec-header .sec-num{font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
 .sec-header h2{color:white;margin-bottom:4px}.sec-header p{color:rgba(255,255,255,.75);font-size:.9rem;margin:0}
 .sec-icon{font-size:2rem;margin-bottom:9px}
-.sec-logo{position:absolute;top:14px;left:14px;height:46px;object-fit:contain;opacity:.9}
+
 
 /* CARDS */
 .card{background:var(--white);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);border:1px solid rgba(226,232,240,.7);transition:box-shadow .25s}
@@ -327,388 +327,382 @@ a{color:inherit;text-decoration:none}
 </style>
 </head>
 <body>
-
 <!-- AUTH -->
-<div id="authScreen" class="auth-overlay">
-  <div class="auth-card">
-    <div class="auth-logo">
-      <img src="logo.png" alt="من الرؤية إلى الثمر" style="max-height:130px;max-width:260px">
-      <h2>التخطيط الاستراتيجي للكنيسة والخدمات الروحية</h2>
-      <p>سجّل حساب كنيستك أو خدمتك لحفظ تقدمك والرجوع إليه في أي وقت</p>
-    </div>
-    <div class="auth-tabs">
-      <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')" type="button">تسجيل الدخول</button>
-      <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')" type="button">حساب جديد</button>
-    </div>
-    <div id="authError" class="auth-error"></div>
-    <form id="loginForm" class="auth-form" onsubmit="event.preventDefault();handleLogin();">
-      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="loginEmail" placeholder="example@church.com" required></div>
-      <div class="form-group"><label>كلمة المرور</label><input type="password" id="loginPassword" placeholder="••••••••" required></div>
-      <button type="submit" class="btn btn-primary" style="width:100%">تسجيل الدخول</button>
-      <div class="auth-hint"><a href="#" onclick="event.preventDefault();handleForgotPassword();">نسيت كلمة المرور؟</a></div>
-    </form>
-    <form id="registerForm" class="auth-form" style="display:none" onsubmit="event.preventDefault();handleRegister();">
-      <div class="form-group"><label>اسم الكنيسة / الخدمة</label><input type="text" id="regOrgName" placeholder="مثال: كنيسة العذراء — خدمة الشباب" required></div>
-      <div class="form-group"><label>نوع الجهة</label><select id="regOrgType"><option value="كنيسة">كنيسة</option><option value="خدمة">خدمة / فريق خدمة</option></select></div>
-      <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="regEmail" placeholder="example@church.com" required></div>
-      <div class="form-group"><label>كلمة المرور</label><input type="password" id="regPassword" placeholder="6 أحرف على الأقل" required></div>
-      <div class="form-group"><label>تأكيد كلمة المرور</label><input type="password" id="regPassword2" placeholder="••••••••" required></div>
-      <button type="submit" class="btn btn-primary" style="width:100%">إنشاء الحساب</button>
-    </form>
-  </div>
+<div class="auth-overlay" id="authScreen">
+<div class="auth-card">
+<div class="auth-logo">
+<img alt="من الرؤية إلى الثمر" src="logo.png" style="max-height:130px;max-width:260px"/>
+<h2>التخطيط الاستراتيجي للكنيسة والخدمات الروحية</h2>
+<p>سجّل حساب كنيستك أو خدمتك لحفظ تقدمك والرجوع إليه في أي وقت</p>
 </div>
-
+<div class="auth-tabs">
+<button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')" type="button">تسجيل الدخول</button>
+<button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')" type="button">حساب جديد</button>
+</div>
+<div class="auth-error" id="authError"></div>
+<form class="auth-form" id="loginForm" onsubmit="event.preventDefault();handleLogin();">
+<div class="form-group"><label>البريد الإلكتروني</label><input id="loginEmail" placeholder="example@church.com" required="" type="email"/></div>
+<div class="form-group"><label>كلمة المرور</label><input id="loginPassword" placeholder="••••••••" required="" type="password"/></div>
+<button class="btn btn-primary" style="width:100%" type="submit">تسجيل الدخول</button>
+<div class="auth-hint"><a href="#" onclick="event.preventDefault();handleForgotPassword();">نسيت كلمة المرور؟</a></div>
+</form>
+<form class="auth-form" id="registerForm" onsubmit="event.preventDefault();handleRegister();" style="display:none">
+<div class="form-group"><label>اسم الكنيسة / الخدمة</label><input id="regOrgName" placeholder="مثال: كنيسة العذراء — خدمة الشباب" required="" type="text"/></div>
+<div class="form-group"><label>نوع الجهة</label><select id="regOrgType"><option value="كنيسة">كنيسة</option><option value="خدمة">خدمة / فريق خدمة</option></select></div>
+<div class="form-group"><label>البريد الإلكتروني</label><input id="regEmail" placeholder="example@church.com" required="" type="email"/></div>
+<div class="form-group"><label>كلمة المرور</label><input id="regPassword" placeholder="6 أحرف على الأقل" required="" type="password"/></div>
+<div class="form-group"><label>تأكيد كلمة المرور</label><input id="regPassword2" placeholder="••••••••" required="" type="password"/></div>
+<button class="btn btn-primary" style="width:100%" type="submit">إنشاء الحساب</button>
+</form>
+</div>
+</div>
 <!-- APP ROOT -->
 <div id="appRoot" style="display:none">
-
 <div class="user-bar">
-  <div class="user-bar-inner">
-    <div style="display:flex;align-items:center;gap:11px">
-      <img src="logo.png" alt="logo" class="user-bar-logo">
-      <div class="user-bar-org" id="userOrgName">—</div>
-    </div>
-    <div class="user-bar-actions">
-      <span id="lastSaved" class="user-bar-saved">—</span>
-      <button class="ub-btn ub-pdf-all" onclick="exportAllPDF()" type="button">📄 تصدير الكل</button>
-      <button class="ub-btn ub-save" onclick="saveProgress()" type="button">💾 حفظ</button>
-      <button class="ub-btn ub-logout" onclick="handleLogout()" type="button">خروج ⏻</button>
-    </div>
-  </div>
+<div class="user-bar-inner">
+<div style="display:flex;align-items:center;gap:11px">
+
+<div class="user-bar-org" id="userOrgName">—</div>
 </div>
-
+<div class="user-bar-actions">
+<span class="user-bar-saved" id="lastSaved">—</span>
+<button class="ub-btn ub-pdf-all" onclick="exportAllPDF()" type="button">📄 تصدير الكل</button>
+<button class="ub-btn ub-save" onclick="saveProgress()" type="button">💾 حفظ</button>
+<button class="ub-btn ub-logout" onclick="handleLogout()" type="button">خروج ⏻</button>
+</div>
+</div>
+</div>
 <header class="site-header">
-  <h1>التخطيط الاستراتيجي للكنيسة والخدمات الروحية</h1>
-  <p>ثمانية تطبيقات تفاعلية متكاملة لبناء خطة استراتيجية حية لكنيستك</p>
-  <div class="header-badges">
-    <span class="badge">🏠 الرئيسية</span><span class="badge">🎯 SWOT</span>
-    <span class="badge">💡 الرؤية والأهداف</span><span class="badge">📊 الأداء KPI</span>
-    <span class="badge">⭐ الأولويات</span><span class="badge">👥 الخدام</span>
-    <span class="badge">📅 خطة 90 يوم</span><span class="badge">🔄 متابعة الأهداف</span>
-  </div>
+
+<h1>التخطيط الاستراتيجي للكنيسة والخدمات الروحية</h1>
+<p>ثمانية تطبيقات تفاعلية متكاملة لبناء خطة استراتيجية حية لكنيستك</p>
+<div class="header-badges">
+<span class="badge">🏠 الرئيسية</span><span class="badge">🎯 SWOT</span>
+<span class="badge">💡 الرؤية والأهداف</span><span class="badge">📊 الأداء KPI</span>
+<span class="badge">⭐ الأولويات</span><span class="badge">👥 الخدام</span>
+<span class="badge">📅 خطة 90 يوم</span><span class="badge">🔄 متابعة الأهداف</span>
+</div>
 </header>
-
 <nav class="journey-nav">
-  <div class="journey-inner">
-    <div class="nav-step active" onclick="goTo(0)"><span class="sn">1</span><span>الرئيسية</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(1)"><span class="sn">2</span><span>SWOT</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(2)"><span class="sn">3</span><span>الرؤية والأهداف</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(3)"><span class="sn">4</span><span>لوحة الأداء</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(4)"><span class="sn">5</span><span>الأولويات</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(5)"><span class="sn">6</span><span>الخدام</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(6)"><span class="sn">7</span><span>خطة 90 يوم</span></div>
-    <span class="nav-divider">›</span>
-    <div class="nav-step" onclick="goTo(7)"><span class="sn">8</span><span>متابعة الأهداف</span></div>
-  </div>
+<div class="journey-inner">
+<div class="nav-step active" onclick="goTo(0)"><span class="sn">1</span><span>الرئيسية</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(1)"><span class="sn">2</span><span>SWOT</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(2)"><span class="sn">3</span><span>الرؤية والأهداف</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(3)"><span class="sn">4</span><span>لوحة الأداء</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(4)"><span class="sn">5</span><span>الأولويات</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(5)"><span class="sn">6</span><span>الخدام</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(6)"><span class="sn">7</span><span>خطة 90 يوم</span></div>
+<span class="nav-divider">›</span>
+<div class="nav-step" onclick="goTo(7)"><span class="sn">8</span><span>متابعة الأهداف</span></div>
+</div>
 </nav>
-
 <!-- S0: DASHBOARD -->
 <section class="section container active" id="s0">
-  <div class="sec-header">
-    <div class="sec-num">الصفحة الرئيسية</div><div class="sec-icon">🏠</div>
-    <h2>لوحة المتابعة الرئيسية</h2>
-    <p>نظرة شاملة على تقدم كنيستك في جميع أدوات التخطيط الاستراتيجي</p>
-  </div>
-  <div class="export-bar"><p>📄 تصدير لوحة المتابعة كتقرير PDF</p><div class="export-btns"><button class="btn btn-olive btn-sm" onclick="exportPDF('s0','الداشبورد')">📄 PDF</button></div></div>
-  <div class="card mb-16">
-    <div class="card-title"><span>⛪</span> معلومات الكنيسة / الخدمة</div>
-    <div class="grid-3">
-      <div style="text-align:center;padding:11px"><div style="font-size:1.8rem;font-weight:800;color:var(--navy)" id="dashChurchName">—</div><div style="font-size:.78rem;color:var(--muted)">اسم الكنيسة / الخدمة</div></div>
-      <div style="text-align:center;padding:11px"><div style="font-size:1.8rem;font-weight:800;color:var(--gold)" id="dashCompletion">0%</div><div style="font-size:.78rem;color:var(--muted)">نسبة اكتمال الخطة</div></div>
-      <div style="text-align:center;padding:11px"><div style="font-size:1.8rem;font-weight:800;color:var(--olive)" id="servantCount">0</div><div style="font-size:.78rem;color:var(--muted)">خدام مسجلون</div></div>
-    </div>
-  </div>
-  <div class="dash-stat-grid">
-    <div class="dash-stat"><div class="dash-stat-num" id="ds-swot">0</div><div class="dash-stat-label">نقاط SWOT</div></div>
-    <div class="dash-stat" style="border-top-color:var(--olive)"><div class="dash-stat-num" id="ds-goals">0</div><div class="dash-stat-label">أهداف SMART</div></div>
-    <div class="dash-stat" style="border-top-color:#1a5c2a"><div class="dash-stat-num" id="ds-tasks">0</div><div class="dash-stat-label">مهام 90 يوم</div></div>
-    <div class="dash-stat" style="border-top-color:#8b1a1a"><div class="dash-stat-num" id="ds-servants">0</div><div class="dash-stat-label">تقييمات الخدام</div></div>
-  </div>
-  <div class="card mb-16">
-    <div class="card-title"><span>📋</span> حالة كل أداة</div>
-    <div id="dashTools">
-      <div class="dash-tool-card" onclick="goTo(1)"><div><div class="dash-tool-name">🎯 تحليل SWOT للكنيسة / الخدمة</div><div class="dash-tool-status" id="dt-swot">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-swot">فارغ</span></div>
-      <div class="dash-tool-card" onclick="goTo(2)"><div><div class="dash-tool-name">💡 صياغة الرؤية والرسالة والأهداف</div><div class="dash-tool-status" id="dt-vision">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-vision">فارغ</span></div>
-      <div class="dash-tool-card" onclick="goTo(3)"><div><div class="dash-tool-name">📊 لوحة مؤشرات الأداء KPI</div><div class="dash-tool-status" id="dt-kpi">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-kpi">فارغ</span></div>
-      <div class="dash-tool-card" onclick="goTo(4)"><div><div class="dash-tool-name">⭐ مصفوفة الأولويات الاستراتيجية</div><div class="dash-tool-status" id="dt-matrix">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-matrix">فارغ</span></div>
-      <div class="dash-tool-card" onclick="goTo(5)"><div><div class="dash-tool-name">👥 نظام تقييم الخدام</div><div class="dash-tool-status" id="dt-servants">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-servants">فارغ</span></div>
-      <div class="dash-tool-card" onclick="goTo(6)"><div><div class="dash-tool-name">📅 خطة أول 90 يوم</div><div class="dash-tool-status" id="dt-plan">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-plan">فارغ</span></div>
-      <div class="dash-tool-card" onclick="goTo(7)"><div><div class="dash-tool-name">🔄 متابعة الأهداف الأسبوعية</div><div class="dash-tool-status" id="dt-track">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-track">فارغ</span></div>
-    </div>
-  </div>
-  <div class="card mb-16" id="dashVisionCard" style="display:none">
-    <div class="card-title"><span>💡</span> ملخص الرؤية والرسالة</div>
-    <div style="background:linear-gradient(135deg,var(--navy),var(--olive));border-radius:var(--r-sm);padding:16px;color:white;text-align:center">
-      <div style="font-size:1.05rem;font-weight:700;color:var(--gold)" id="dashVisionText">—</div>
-      <div style="font-size:.83rem;margin-top:7px;opacity:.85" id="dashMissionText">—</div>
-    </div>
-  </div>
-  <div class="card" id="dashGoalsCard" style="display:none">
-    <div class="card-title"><span>🎯</span> الأهداف الاستراتيجية وتقدمها</div>
-    <div id="dashGoalsList"></div>
-  </div>
-  <div class="action-bar"><button class="btn btn-primary" onclick="goTo(1)">ابدأ بتحليل SWOT ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">الصفحة الرئيسية</div><div class="sec-icon">🏠</div>
+<h2>لوحة المتابعة الرئيسية</h2>
+<p>نظرة شاملة على تقدم كنيستك في جميع أدوات التخطيط الاستراتيجي</p>
+</div>
+<div class="export-bar"><p>📄 تصدير لوحة المتابعة كتقرير PDF</p><div class="export-btns"><button class="btn btn-olive btn-sm" onclick="exportPDF('s0','الداشبورد')">📄 PDF</button></div></div>
+<div class="card mb-16">
+<div class="card-title"><span>⛪</span> معلومات الكنيسة / الخدمة</div>
+<div class="grid-3">
+<div style="text-align:center;padding:11px"><div id="dashChurchName" style="font-size:1.8rem;font-weight:800;color:var(--navy)">—</div><div style="font-size:.78rem;color:var(--muted)">اسم الكنيسة / الخدمة</div></div>
+<div style="text-align:center;padding:11px"><div id="dashCompletion" style="font-size:1.8rem;font-weight:800;color:var(--gold)">0%</div><div style="font-size:.78rem;color:var(--muted)">نسبة اكتمال الخطة</div></div>
+<div style="text-align:center;padding:11px"><div id="servantCount" style="font-size:1.8rem;font-weight:800;color:var(--olive)">0</div><div style="font-size:.78rem;color:var(--muted)">خدام مسجلون</div></div>
+</div>
+</div>
+<div class="dash-stat-grid">
+<div class="dash-stat"><div class="dash-stat-num" id="ds-swot">0</div><div class="dash-stat-label">نقاط SWOT</div></div>
+<div class="dash-stat" style="border-top-color:var(--olive)"><div class="dash-stat-num" id="ds-goals">0</div><div class="dash-stat-label">أهداف SMART</div></div>
+<div class="dash-stat" style="border-top-color:#1a5c2a"><div class="dash-stat-num" id="ds-tasks">0</div><div class="dash-stat-label">مهام 90 يوم</div></div>
+<div class="dash-stat" style="border-top-color:#8b1a1a"><div class="dash-stat-num" id="ds-servants">0</div><div class="dash-stat-label">تقييمات الخدام</div></div>
+</div>
+<div class="card mb-16">
+<div class="card-title"><span>📋</span> حالة كل أداة</div>
+<div id="dashTools">
+<div class="dash-tool-card" onclick="goTo(1)"><div><div class="dash-tool-name">🎯 تحليل SWOT للكنيسة / الخدمة</div><div class="dash-tool-status" id="dt-swot">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-swot">فارغ</span></div>
+<div class="dash-tool-card" onclick="goTo(2)"><div><div class="dash-tool-name">💡 صياغة الرؤية والرسالة والأهداف</div><div class="dash-tool-status" id="dt-vision">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-vision">فارغ</span></div>
+<div class="dash-tool-card" onclick="goTo(3)"><div><div class="dash-tool-name">📊 لوحة مؤشرات الأداء KPI</div><div class="dash-tool-status" id="dt-kpi">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-kpi">فارغ</span></div>
+<div class="dash-tool-card" onclick="goTo(4)"><div><div class="dash-tool-name">⭐ مصفوفة الأولويات الاستراتيجية</div><div class="dash-tool-status" id="dt-matrix">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-matrix">فارغ</span></div>
+<div class="dash-tool-card" onclick="goTo(5)"><div><div class="dash-tool-name">👥 نظام تقييم الخدام</div><div class="dash-tool-status" id="dt-servants">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-servants">فارغ</span></div>
+<div class="dash-tool-card" onclick="goTo(6)"><div><div class="dash-tool-name">📅 خطة أول 90 يوم</div><div class="dash-tool-status" id="dt-plan">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-plan">فارغ</span></div>
+<div class="dash-tool-card" onclick="goTo(7)"><div><div class="dash-tool-name">🔄 متابعة الأهداف الأسبوعية</div><div class="dash-tool-status" id="dt-track">لم يبدأ</div></div><span class="dash-badge badge-empty" id="db-track">فارغ</span></div>
+</div>
+</div>
+<div class="card mb-16" id="dashVisionCard" style="display:none">
+<div class="card-title"><span>💡</span> ملخص الرؤية والرسالة</div>
+<div style="background:linear-gradient(135deg,var(--navy),var(--olive));border-radius:var(--r-sm);padding:16px;color:white;text-align:center">
+<div id="dashVisionText" style="font-size:1.05rem;font-weight:700;color:var(--gold)">—</div>
+<div id="dashMissionText" style="font-size:.83rem;margin-top:7px;opacity:.85">—</div>
+</div>
+</div>
+<div class="card" id="dashGoalsCard" style="display:none">
+<div class="card-title"><span>🎯</span> الأهداف الاستراتيجية وتقدمها</div>
+<div id="dashGoalsList"></div>
+</div>
+<div class="action-bar"><button class="btn btn-primary" onclick="goTo(1)">ابدأ بتحليل SWOT ←</button></div>
+</section>
 <!-- S1: SWOT -->
 <section class="section container" id="s1">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 01</div><div class="sec-icon">🎯</div>
-    <h2>تحليل SWOT للكنيسة / الخدمة</h2>
-    <p>حدّد نقاط القوة والضعف والفرص والتهديدات — اضغط على أي خانة لإضافة نقطة أو حذفها</p>
-  </div>
-  <div class="export-bar"><p>📊 اكتمال التحليل: <strong id="swotTotal">0 نقطة</strong></p><div class="export-btns"><button class="btn btn-outline btn-sm" onclick="loadSwotSamples()">📋 أمثلة</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s1','تحليل SWOT')">📄 PDF</button></div></div>
-  <div style="position:relative">
-    <div class="swot-grid">
-      <div class="swot-cell s"><div class="swot-label">نقاط القوة</div><div class="swot-sublabel">STRENGTHS · <span id="cnt-s">0</span></div><ul class="swot-items" id="swot-s"></ul><div class="swot-input-row"><input type="text" id="inp-s" placeholder="أضف نقطة قوة..." onkeydown="if(event.key==='Enter')addSwot('s')"><button class="swot-add-btn" onclick="addSwot('s')">+ أضف</button></div><span class="swot-letter">S</span></div>
-      <div class="swot-cell w"><div class="swot-label">نقاط الضعف</div><div class="swot-sublabel">WEAKNESSES · <span id="cnt-w">0</span></div><ul class="swot-items" id="swot-w"></ul><div class="swot-input-row"><input type="text" id="inp-w" placeholder="أضف نقطة ضعف..." onkeydown="if(event.key==='Enter')addSwot('w')"><button class="swot-add-btn" onclick="addSwot('w')">+ أضف</button></div><span class="swot-letter">W</span></div>
-      <div class="swot-cell o"><div class="swot-label">الفرص</div><div class="swot-sublabel">OPPORTUNITIES · <span id="cnt-o">0</span></div><ul class="swot-items" id="swot-o"></ul><div class="swot-input-row"><input type="text" id="inp-o" placeholder="أضف فرصة..." onkeydown="if(event.key==='Enter')addSwot('o')"><button class="swot-add-btn" onclick="addSwot('o')">+ أضف</button></div><span class="swot-letter">O</span></div>
-      <div class="swot-cell t"><div class="swot-label">التهديدات</div><div class="swot-sublabel">THREATS · <span id="cnt-t">0</span></div><ul class="swot-items" id="swot-t"></ul><div class="swot-input-row"><input type="text" id="inp-t" placeholder="أضف تهديداً..." onkeydown="if(event.key==='Enter')addSwot('t')"><button class="swot-add-btn" onclick="addSwot('t')">+ أضف</button></div><span class="swot-letter">T</span></div>
-    </div>
-    <div class="swot-center">SWOT</div>
-  </div>
-  <div class="card mt-16"><div class="card-title"><span>📊</span> ملخص التحليل</div><div id="swotSummaryBars" class="bar-chart"></div></div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(0)">→ الرئيسية</button><button class="btn btn-primary" onclick="goTo(2)">التالي: الرؤية والأهداف ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 01</div><div class="sec-icon">🎯</div>
+<h2>تحليل SWOT للكنيسة / الخدمة</h2>
+<p>حدّد نقاط القوة والضعف والفرص والتهديدات — اضغط على أي خانة لإضافة نقطة أو حذفها</p>
+</div>
+<div class="export-bar"><p>📊 اكتمال التحليل: <strong id="swotTotal">0 نقطة</strong></p><div class="export-btns"><button class="btn btn-outline btn-sm" onclick="loadSwotSamples()">📋 أمثلة</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s1','تحليل SWOT')">📄 PDF</button></div></div>
+<div style="position:relative">
+<div class="swot-grid">
+<div class="swot-cell s"><div class="swot-label">نقاط القوة</div><div class="swot-sublabel">STRENGTHS · <span id="cnt-s">0</span></div><ul class="swot-items" id="swot-s"></ul><div class="swot-input-row"><input id="inp-s" onkeydown="if(event.key==='Enter')addSwot('s')" placeholder="أضف نقطة قوة..." type="text"/><button class="swot-add-btn" onclick="addSwot('s')">+ أضف</button></div><span class="swot-letter">S</span></div>
+<div class="swot-cell w"><div class="swot-label">نقاط الضعف</div><div class="swot-sublabel">WEAKNESSES · <span id="cnt-w">0</span></div><ul class="swot-items" id="swot-w"></ul><div class="swot-input-row"><input id="inp-w" onkeydown="if(event.key==='Enter')addSwot('w')" placeholder="أضف نقطة ضعف..." type="text"/><button class="swot-add-btn" onclick="addSwot('w')">+ أضف</button></div><span class="swot-letter">W</span></div>
+<div class="swot-cell o"><div class="swot-label">الفرص</div><div class="swot-sublabel">OPPORTUNITIES · <span id="cnt-o">0</span></div><ul class="swot-items" id="swot-o"></ul><div class="swot-input-row"><input id="inp-o" onkeydown="if(event.key==='Enter')addSwot('o')" placeholder="أضف فرصة..." type="text"/><button class="swot-add-btn" onclick="addSwot('o')">+ أضف</button></div><span class="swot-letter">O</span></div>
+<div class="swot-cell t"><div class="swot-label">التهديدات</div><div class="swot-sublabel">THREATS · <span id="cnt-t">0</span></div><ul class="swot-items" id="swot-t"></ul><div class="swot-input-row"><input id="inp-t" onkeydown="if(event.key==='Enter')addSwot('t')" placeholder="أضف تهديداً..." type="text"/><button class="swot-add-btn" onclick="addSwot('t')">+ أضف</button></div><span class="swot-letter">T</span></div>
+</div>
+<div class="swot-center">SWOT</div>
+</div>
+<div class="card mt-16"><div class="card-title"><span>📊</span> ملخص التحليل</div><div class="bar-chart" id="swotSummaryBars"></div></div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(0)">→ الرئيسية</button><button class="btn btn-primary" onclick="goTo(2)">التالي: الرؤية والأهداف ←</button></div>
+</section>
 <!-- S2: VISION + SMART -->
 <section class="section container" id="s2">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 02</div><div class="sec-icon">💡</div>
-    <h2>صياغة الرؤية والرسالة والأهداف الاستراتيجية</h2>
-    <p>حوّل الرؤية الإلهية إلى كلمات واضحة وأهداف SMART قابلة للتنفيذ</p>
-  </div>
-  <div class="export-bar"><p>💡 أدخل معلومات الرؤية وأضف أهدافك الاستراتيجية</p><div class="export-btns"><button class="btn btn-olive btn-sm" onclick="exportPDF('s2','الرؤية والأهداف')">📄 PDF</button></div></div>
-  <div class="grid-2" style="align-items:start">
-    <div>
-      <div class="card">
-        <div class="card-title"><span>⛪</span> معلومات الكنيسة / الخدمة</div>
-        <div class="form-group"><label>اسم الكنيسة / الخدمة</label><input type="text" id="churchName" placeholder="مثال: كنيسة القيامة" oninput="buildVision()"></div>
-        <div class="form-group"><label>نخدم مَن؟</label><input type="text" id="who" placeholder="مثال: الشباب من 18-35 سنة..." oninput="buildVision()"></div>
-        <div class="form-group"><label>ماذا نريد أن نصبح؟ (الرؤية)</label><textarea id="whatBecome" placeholder="مثال: أن نكون كنيسة تُنتج قادة..." oninput="buildVision()"></textarea></div>
-        <div class="form-group"><label>ما الذي يميّزنا؟</label><input type="text" id="unique" placeholder="مثال: تركيزنا على التلمذة العميقة..." oninput="buildVision()"></div>
-        <div class="form-group"><label>لماذا نحن موجودون؟ (الرسالة)</label><textarea id="why" placeholder="مثال: لنُعلن الإنجيل ونُتلمذ الأمم..." oninput="buildVision()"></textarea></div>
-        <div class="form-group"><label>كيف نحقق ذلك؟</label><input type="text" id="how" placeholder="مثال: من خلال العبادة والتعليم والخدمة..." oninput="buildVision()"></div>
-      </div>
-      <div class="card mt-16">
-        <div class="card-title"><span>💎</span> القيم الجوهرية</div>
-        <p style="font-size:.8rem;margin-bottom:11px">اختر 3-5 قيم تحكم سلوككم اليومي</p>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px" id="valuesGrid"></div>
-        <div style="display:flex;gap:7px"><input type="text" id="customValue" placeholder="قيمة مخصصة..."><button class="btn btn-olive btn-sm" onclick="addCustomValue()">+ أضف</button></div>
-      </div>
-    </div>
-    <div>
-      <div class="vision-preview">
-        <div class="vision-text" id="visionOut">ستظهر رؤيتكم هنا...</div>
-        <div class="mission-text" id="missionOut"></div>
-        <div class="values-chips" id="valuesOut"></div>
-      </div>
-      <div class="card mt-16">
-        <div class="card-title"><span>📋</span> الملخص الاستراتيجي</div>
-        <div class="bar-chart">
-          <div class="bar-row"><span class="bar-label">الرؤية</span><div class="bar-track"><div class="bar-fill" id="vf-vision" style="width:0%;background:var(--navy)"></div></div><span class="bar-pct" id="bp-vision">0%</span></div>
-          <div class="bar-row"><span class="bar-label">الرسالة</span><div class="bar-track"><div class="bar-fill" id="vf-mission" style="width:0%;background:var(--gold)"></div></div><span class="bar-pct" id="bp-mission">0%</span></div>
-          <div class="bar-row"><span class="bar-label">القيم</span><div class="bar-track"><div class="bar-fill" id="vf-values" style="width:0%;background:var(--olive)"></div></div><span class="bar-pct" id="bp-values">0%</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mt-24">
-    <div class="card-title"><span>🎯</span> الأهداف الاستراتيجية SMART</div>
-    <p style="margin-bottom:14px">أضف أهدافك الاستراتيجية — ستظهر تلقائياً في خطة 90 يوم وصفحة المتابعة</p>
-    <div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:var(--r-sm);padding:13px;margin-bottom:16px">
-      <div class="form-row" style="margin-bottom:9px">
-        <div class="form-group" style="margin:0"><label>الهدف (محدد وواضح)</label><input type="text" id="sgTitle" placeholder="مثال: إطلاق برنامج تلمذة للشباب"></div>
-        <div class="form-group" style="margin:0"><label>المسؤول الأول</label><input type="text" id="sgOwner" placeholder="اسم المسؤول"></div>
-      </div>
-      <div class="form-row" style="margin-bottom:9px">
-        <div class="form-group" style="margin:0"><label>مؤشر القياس</label><input type="text" id="sgMetric" placeholder="مثال: 50 مشارك بحلول ديسمبر"></div>
-        <div class="form-group" style="margin:0"><label>الموعد النهائي</label><input type="date" id="sgDeadline"></div>
-      </div>
-      <div class="form-group" style="margin-bottom:9px"><label>الموارد المطلوبة</label><input type="text" id="sgResources" placeholder="الوقت، الميزانية، الفريق المطلوب"></div>
-      <button class="btn btn-navy" onclick="addSmartGoal()">+ إضافة هدف استراتيجي</button>
-    </div>
-    <div id="smartGoalsList"></div>
-  </div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(1)">→ السابق</button><button class="btn btn-primary" onclick="goTo(3)">التالي: لوحة الأداء ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 02</div><div class="sec-icon">💡</div>
+<h2>صياغة الرؤية والرسالة والأهداف الاستراتيجية</h2>
+<p>حوّل الرؤية الإلهية إلى كلمات واضحة وأهداف SMART قابلة للتنفيذ</p>
+</div>
+<div class="export-bar"><p>💡 أدخل معلومات الرؤية وأضف أهدافك الاستراتيجية</p><div class="export-btns"><button class="btn btn-olive btn-sm" onclick="exportPDF('s2','الرؤية والأهداف')">📄 PDF</button></div></div>
+<div class="grid-2" style="align-items:start">
+<div>
+<div class="card">
+<div class="card-title"><span>⛪</span> معلومات الكنيسة / الخدمة</div>
+<div class="form-group"><label>اسم الكنيسة / الخدمة</label><input id="churchName" oninput="buildVision()" placeholder="مثال: كنيسة القيامة" type="text"/></div>
+<div class="form-group"><label>نخدم مَن؟</label><input id="who" oninput="buildVision()" placeholder="مثال: الشباب من 18-35 سنة..." type="text"/></div>
+<div class="form-group"><label>ماذا نريد أن نصبح؟ (الرؤية)</label><textarea id="whatBecome" oninput="buildVision()" placeholder="مثال: أن نكون كنيسة تُنتج قادة..."></textarea></div>
+<div class="form-group"><label>ما الذي يميّزنا؟</label><input id="unique" oninput="buildVision()" placeholder="مثال: تركيزنا على التلمذة العميقة..." type="text"/></div>
+<div class="form-group"><label>لماذا نحن موجودون؟ (الرسالة)</label><textarea id="why" oninput="buildVision()" placeholder="مثال: لنُعلن الإنجيل ونُتلمذ الأمم..."></textarea></div>
+<div class="form-group"><label>كيف نحقق ذلك؟</label><input id="how" oninput="buildVision()" placeholder="مثال: من خلال العبادة والتعليم والخدمة..." type="text"/></div>
+</div>
+<div class="card mt-16">
+<div class="card-title"><span>💎</span> القيم الجوهرية</div>
+<p style="font-size:.8rem;margin-bottom:11px">اختر 3-5 قيم تحكم سلوككم اليومي</p>
+<div id="valuesGrid" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px"></div>
+<div style="display:flex;gap:7px"><input id="customValue" placeholder="قيمة مخصصة..." type="text"/><button class="btn btn-olive btn-sm" onclick="addCustomValue()">+ أضف</button></div>
+</div>
+</div>
+<div>
+<div class="vision-preview">
+<div class="vision-text" id="visionOut">ستظهر رؤيتكم هنا...</div>
+<div class="mission-text" id="missionOut"></div>
+<div class="values-chips" id="valuesOut"></div>
+</div>
+<div class="card mt-16">
+<div class="card-title"><span>📋</span> الملخص الاستراتيجي</div>
+<div class="bar-chart">
+<div class="bar-row"><span class="bar-label">الرؤية</span><div class="bar-track"><div class="bar-fill" id="vf-vision" style="width:0%;background:var(--navy)"></div></div><span class="bar-pct" id="bp-vision">0%</span></div>
+<div class="bar-row"><span class="bar-label">الرسالة</span><div class="bar-track"><div class="bar-fill" id="vf-mission" style="width:0%;background:var(--gold)"></div></div><span class="bar-pct" id="bp-mission">0%</span></div>
+<div class="bar-row"><span class="bar-label">القيم</span><div class="bar-track"><div class="bar-fill" id="vf-values" style="width:0%;background:var(--olive)"></div></div><span class="bar-pct" id="bp-values">0%</span></div>
+</div>
+</div>
+</div>
+</div>
+<div class="card mt-24">
+<div class="card-title"><span>🎯</span> الأهداف الاستراتيجية SMART</div>
+<p style="margin-bottom:14px">أضف أهدافك الاستراتيجية — ستظهر تلقائياً في خطة 90 يوم وصفحة المتابعة</p>
+<div style="background:var(--gold-pale);border:1.5px solid var(--gold);border-radius:var(--r-sm);padding:13px;margin-bottom:16px">
+<div class="form-row" style="margin-bottom:9px">
+<div class="form-group" style="margin:0"><label>الهدف (محدد وواضح)</label><input id="sgTitle" placeholder="مثال: إطلاق برنامج تلمذة للشباب" type="text"/></div>
+<div class="form-group" style="margin:0"><label>المسؤول الأول</label><input id="sgOwner" placeholder="اسم المسؤول" type="text"/></div>
+</div>
+<div class="form-row" style="margin-bottom:9px">
+<div class="form-group" style="margin:0"><label>مؤشر القياس</label><input id="sgMetric" placeholder="مثال: 50 مشارك بحلول ديسمبر" type="text"/></div>
+<div class="form-group" style="margin:0"><label>الموعد النهائي</label><input id="sgDeadline" type="date"/></div>
+</div>
+<div class="form-group" style="margin-bottom:9px"><label>الموارد المطلوبة</label><input id="sgResources" placeholder="الوقت، الميزانية، الفريق المطلوب" type="text"/></div>
+<button class="btn btn-navy" onclick="addSmartGoal()">+ إضافة هدف استراتيجي</button>
+</div>
+<div id="smartGoalsList"></div>
+</div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(1)">→ السابق</button><button class="btn btn-primary" onclick="goTo(3)">التالي: لوحة الأداء ←</button></div>
+</section>
 <!-- S3: KPI -->
 <section class="section container" id="s3">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 03</div><div class="sec-icon">📊</div>
-    <h2>لوحة مؤشرات الأداء الكنسية</h2>
-    <p>تابع الأرقام التي تعكس أثراً روحياً حقيقياً — اضبط المؤشرات وفق واقع كنيستك</p>
-  </div>
-  <div class="export-bar"><p>📊 متوسط الأداء الكلي: <strong id="overallPct">0%</strong></p><div class="export-btns"><button class="btn btn-danger btn-sm" onclick="resetKPIs()">↺ إعادة تعيين</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s3','لوحة الأداء')">📄 PDF</button></div></div>
-  <div class="kpi-grid" id="kpiGrid"></div>
-  <div class="card mt-16">
-    <div class="card-title"><span>🎯</span> الأداء الإجمالي</div>
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:7px">
-      <div style="flex:1"><div class="kpi-bar-track" style="height:13px"><div class="kpi-bar" id="overallBar" style="width:0%;background:linear-gradient(90deg,var(--navy),var(--olive))"></div></div></div>
-      <div style="font-size:1.25rem;font-weight:800;color:var(--navy);min-width:44px" id="overallBarPct">0%</div>
-    </div>
-    <div class="tip-box"><strong>💡 تذكّر:</strong> المؤشرات أداة خدمة وليست هدفاً بذاتها — استخدمها لاكتشاف الفرص لا للإحباط.</div>
-  </div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(2)">→ السابق</button><button class="btn btn-primary" onclick="goTo(4)">التالي: الأولويات ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 03</div><div class="sec-icon">📊</div>
+<h2>لوحة مؤشرات الأداء الكنسية</h2>
+<p>تابع الأرقام التي تعكس أثراً روحياً حقيقياً — اضبط المؤشرات وفق واقع كنيستك</p>
+</div>
+<div class="export-bar"><p>📊 متوسط الأداء الكلي: <strong id="overallPct">0%</strong></p><div class="export-btns"><button class="btn btn-danger btn-sm" onclick="resetKPIs()">↺ إعادة تعيين</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s3','لوحة الأداء')">📄 PDF</button></div></div>
+<div class="kpi-grid" id="kpiGrid"></div>
+<div class="card mt-16">
+<div class="card-title"><span>🎯</span> الأداء الإجمالي</div>
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:7px">
+<div style="flex:1"><div class="kpi-bar-track" style="height:13px"><div class="kpi-bar" id="overallBar" style="width:0%;background:linear-gradient(90deg,var(--navy),var(--olive))"></div></div></div>
+<div id="overallBarPct" style="font-size:1.25rem;font-weight:800;color:var(--navy);min-width:44px">0%</div>
+</div>
+<div class="tip-box"><strong>💡 تذكّر:</strong> المؤشرات أداة خدمة وليست هدفاً بذاتها — استخدمها لاكتشاف الفرص لا للإحباط.</div>
+</div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(2)">→ السابق</button><button class="btn btn-primary" onclick="goTo(4)">التالي: الأولويات ←</button></div>
+</section>
 <!-- S4: MATRIX -->
 <section class="section container" id="s4">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 04</div><div class="sec-icon">⭐</div>
-    <h2>مصفوفة الأولويات الاستراتيجية</h2>
-    <p>رتّب مبادراتك حسب الأثر والإلحاحية — انقر على المصفوفة لإضافة مبادرة</p>
-  </div>
-  <div class="export-bar"><p>⭐ عدد المبادرات: <strong id="initCount">0</strong></p><div class="export-btns"><button class="btn btn-outline btn-sm" onclick="loadInitSamples()">📋 أمثلة</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s4','مصفوفة الأولويات')">📄 PDF</button></div></div>
-  <div class="grid-2" style="align-items:start">
-    <div>
-      <div class="initiative-form">
-        <input type="text" id="initName" placeholder="اسم المبادرة / المشروع">
-        <select id="initImp"><option value="high">أثر عالٍ</option><option value="low">أثر محدود</option></select>
-        <select id="initUrg"><option value="high">إلحاحية عالية</option><option value="low">إلحاحية منخفضة</option></select>
-        <button class="btn btn-navy btn-sm" onclick="addInitiative()">+ أضف</button>
-      </div>
-      <div class="matrix-container">
-        <canvas class="matrix-canvas" id="matrixCanvas" onclick="matrixClick(event)"></canvas>
-        <div class="matrix-labels" style="position:absolute;inset:0;pointer-events:none">
-          <div class="ql q1">افعل أولاً</div><div class="ql q2">خطط له</div>
-          <div class="ql q3">ملء الوقت</div><div class="ql q4">أجّله</div>
-        </div>
-      </div>
-    </div>
-    <div class="card"><div class="card-title"><span>📋</span> قائمة المبادرات</div><div id="initList"></div></div>
-  </div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(3)">→ السابق</button><button class="btn btn-primary" onclick="goTo(5)">التالي: الخدام ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 04</div><div class="sec-icon">⭐</div>
+<h2>مصفوفة الأولويات الاستراتيجية</h2>
+<p>رتّب مبادراتك حسب الأثر والإلحاحية — انقر على المصفوفة لإضافة مبادرة</p>
+</div>
+<div class="export-bar"><p>⭐ عدد المبادرات: <strong id="initCount">0</strong></p><div class="export-btns"><button class="btn btn-outline btn-sm" onclick="loadInitSamples()">📋 أمثلة</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s4','مصفوفة الأولويات')">📄 PDF</button></div></div>
+<div class="grid-2" style="align-items:start">
+<div>
+<div class="initiative-form">
+<input id="initName" placeholder="اسم المبادرة / المشروع" type="text"/>
+<select id="initImp"><option value="high">أثر عالٍ</option><option value="low">أثر محدود</option></select>
+<select id="initUrg"><option value="high">إلحاحية عالية</option><option value="low">إلحاحية منخفضة</option></select>
+<button class="btn btn-navy btn-sm" onclick="addInitiative()">+ أضف</button>
+</div>
+<div class="matrix-container">
+<canvas class="matrix-canvas" id="matrixCanvas" onclick="matrixClick(event)"></canvas>
+<div class="matrix-labels" style="position:absolute;inset:0;pointer-events:none">
+<div class="ql q1">افعل أولاً</div><div class="ql q2">خطط له</div>
+<div class="ql q3">ملء الوقت</div><div class="ql q4">أجّله</div>
+</div>
+</div>
+</div>
+<div class="card"><div class="card-title"><span>📋</span> قائمة المبادرات</div><div id="initList"></div></div>
+</div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(3)">→ السابق</button><button class="btn btn-primary" onclick="goTo(5)">التالي: الخدام ←</button></div>
+</section>
 <!-- S5: SERVANTS -->
 <section class="section container" id="s5">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 05</div><div class="sec-icon">👥</div>
-    <h2>نظام تقييم الخدام</h2>
-    <p>أضف خادماً بزر + وقيّمه — تُحفظ كل التقييمات بتاريخها تلقائياً</p>
-  </div>
-  <div class="export-bar"><p>👥 عدد الخدام المسجلين: <strong id="servantCount">0</strong></p><div class="export-btns"><button class="btn btn-navy btn-sm" onclick="addNewServant()">👤+ إضافة خادم</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s5','تقرير الخدام')">📄 PDF</button></div></div>
-  <div class="servant-list-bar">
-    <label>👤 اختر الخادم:</label>
-    <select class="servant-select" id="servantSelect" onchange="loadServant(this.value)">
-      <option value="">— اختر من القائمة —</option>
-    </select>
-    <button class="btn btn-primary btn-sm" onclick="addNewServant()">+ خادم جديد</button>
-    <button class="btn btn-olive btn-sm" onclick="saveCurrentServant()">💾 حفظ التقييم</button>
-  </div>
-  <div id="servantFormWrap" style="display:none">
-    <div class="grid-2" style="align-items:start">
-      <div>
-        <div class="card">
-          <div class="card-title"><span>👤</span> بيانات الخادم</div>
-          <div class="servant-info-grid">
-            <div class="form-group" style="margin:0"><label>الاسم الكامل</label><input type="text" id="servName" placeholder="اسم الخادم"></div>
-            <div class="form-group" style="margin:0"><label>مجال الخدمة</label>
-              <select id="servMinistry"><option value="">اختر مجال الخدمة</option><option>خدمة التسبيح والعبادة</option><option>خدمة تعليم الأطفال</option><option>خدمة الشباب</option><option>خدمة الإعلام والتواصل</option><option>خدمة الاستقبال والضيافة</option><option>خدمة المجموعات الصغيرة</option><option>خدمة الكرازة والتبشير</option><option>خدمة الاجتماعات والتخطيط</option><option>خدمة مجتمعية</option><option>القيادة والإدارة</option></select>
-            </div>
-            <div class="form-group" style="margin:0"><label>سنوات الخدمة</label><input type="number" id="servYears" placeholder="0" min="0" max="50"></div>
-            <div class="form-group" style="margin:0"><label>تاريخ التقييم</label><input type="date" id="servDate"></div>
-          </div>
-        </div>
-        <div class="card mt-16">
-          <div class="card-title"><span>⭐</span> معايير التقييم (من 1 إلى 5)</div>
-          <div class="eval-grid" id="evalGrid"></div>
-        </div>
-      </div>
-      <div>
-        <div class="card" style="text-align:center">
-          <div class="card-title" style="justify-content:center"><span>📊</span> النتيجة الإجمالية</div>
-          <div style="display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;padding:13px">
-            <div class="eval-score-ring">
-              <svg class="ring-svg" width="88" height="88" viewBox="0 0 88 88"><circle class="ring-bg" cx="44" cy="44" r="36"/><circle class="ring-fill" id="ringFill" cx="44" cy="44" r="36"/></svg>
-              <div class="ring-text"><div class="ring-num" id="ringNum">0</div><div class="ring-denom">/ 45</div></div>
-            </div>
-            <div><div style="font-size:1.45rem;font-weight:800;color:var(--gold)" id="servantPct">0%</div><div style="font-size:.8rem;color:var(--muted)" id="servantLevel">قيّم الخادم</div></div>
-          </div>
-          <canvas id="evalRadar" width="200" height="200" style="display:block;margin:0 auto"></canvas>
-        </div>
-        <div class="card mt-16"><div class="card-title"><span>📈</span> تفصيل الأداء</div><div class="bar-chart" id="evalBars"></div></div>
-        <div class="eval-result" id="evalResult"><div class="result-level" id="resultLevel">🌟 خادم متميز</div><div class="result-desc" id="resultDesc"></div></div>
-        <div class="card mt-16">
-          <div class="card-title"><span>🕐</span> سجل التقييمات السابقة</div>
-          <div class="servant-history" id="servantHistory"><p style="font-size:.78rem;color:var(--muted);text-align:center;padding:14px">لا توجد تقييمات سابقة</p></div>
-        </div>
-      </div>
-    </div>
-    <div class="action-bar"><button class="btn btn-danger btn-sm" onclick="resetEval()">↺ إعادة تعيين</button><button class="btn btn-olive" onclick="saveCurrentServant()">💾 حفظ تقييم هذا الخادم</button></div>
-  </div>
-  <div id="servantEmptyState" style="text-align:center;padding:50px 20px">
-    <div style="font-size:2.8rem;margin-bottom:14px">👥</div>
-    <h3 style="color:var(--navy);margin-bottom:7px">لا يوجد خدام مسجلون بعد</h3>
-    <p style="margin-bottom:18px">ابدأ بإضافة أول خادم لتسجيل تقييمه</p>
-    <button class="btn btn-primary" onclick="addNewServant()">👤+ إضافة أول خادم</button>
-  </div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(4)">→ السابق</button><button class="btn btn-primary" onclick="goTo(6)">التالي: خطة 90 يوم ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 05</div><div class="sec-icon">👥</div>
+<h2>نظام تقييم الخدام</h2>
+<p>أضف خادماً بزر + وقيّمه — تُحفظ كل التقييمات بتاريخها تلقائياً</p>
+</div>
+<div class="export-bar"><p>👥 عدد الخدام المسجلين: <strong id="servantCount">0</strong></p><div class="export-btns"><button class="btn btn-navy btn-sm" onclick="addNewServant()">👤+ إضافة خادم</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s5','تقرير الخدام')">📄 PDF</button></div></div>
+<div class="servant-list-bar">
+<label>👤 اختر الخادم:</label>
+<select class="servant-select" id="servantSelect" onchange="loadServant(this.value)">
+<option value="">— اختر من القائمة —</option>
+</select>
+<button class="btn btn-primary btn-sm" onclick="addNewServant()">+ خادم جديد</button>
+<button class="btn btn-olive btn-sm" onclick="saveCurrentServant()">💾 حفظ التقييم</button>
+</div>
+<div id="servantFormWrap" style="display:none">
+<div class="grid-2" style="align-items:start">
+<div>
+<div class="card">
+<div class="card-title"><span>👤</span> بيانات الخادم</div>
+<div class="servant-info-grid">
+<div class="form-group" style="margin:0"><label>الاسم الكامل</label><input id="servName" placeholder="اسم الخادم" type="text"/></div>
+<div class="form-group" style="margin:0"><label>مجال الخدمة</label>
+<select id="servMinistry"><option value="">اختر مجال الخدمة</option><option>خدمة التسبيح والعبادة</option><option>خدمة تعليم الأطفال</option><option>خدمة الشباب</option><option>خدمة الإعلام والتواصل</option><option>خدمة الاستقبال والضيافة</option><option>خدمة المجموعات الصغيرة</option><option>خدمة الكرازة والتبشير</option><option>خدمة الاجتماعات والتخطيط</option><option>خدمة مجتمعية</option><option>القيادة والإدارة</option></select>
+</div>
+<div class="form-group" style="margin:0"><label>سنوات الخدمة</label><input id="servYears" max="50" min="0" placeholder="0" type="number"/></div>
+<div class="form-group" style="margin:0"><label>تاريخ التقييم</label><input id="servDate" type="date"/></div>
+</div>
+</div>
+<div class="card mt-16">
+<div class="card-title"><span>⭐</span> معايير التقييم (من 1 إلى 5)</div>
+<div class="eval-grid" id="evalGrid"></div>
+</div>
+</div>
+<div>
+<div class="card" style="text-align:center">
+<div class="card-title" style="justify-content:center"><span>📊</span> النتيجة الإجمالية</div>
+<div style="display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;padding:13px">
+<div class="eval-score-ring">
+<svg class="ring-svg" height="88" viewbox="0 0 88 88" width="88"><circle class="ring-bg" cx="44" cy="44" r="36"></circle><circle class="ring-fill" cx="44" cy="44" id="ringFill" r="36"></circle></svg>
+<div class="ring-text"><div class="ring-num" id="ringNum">0</div><div class="ring-denom">/ 45</div></div>
+</div>
+<div><div id="servantPct" style="font-size:1.45rem;font-weight:800;color:var(--gold)">0%</div><div id="servantLevel" style="font-size:.8rem;color:var(--muted)">قيّم الخادم</div></div>
+</div>
+<canvas height="200" id="evalRadar" style="display:block;margin:0 auto" width="200"></canvas>
+</div>
+<div class="card mt-16"><div class="card-title"><span>📈</span> تفصيل الأداء</div><div class="bar-chart" id="evalBars"></div></div>
+<div class="eval-result" id="evalResult"><div class="result-level" id="resultLevel">🌟 خادم متميز</div><div class="result-desc" id="resultDesc"></div></div>
+<div class="card mt-16">
+<div class="card-title"><span>🕐</span> سجل التقييمات السابقة</div>
+<div class="servant-history" id="servantHistory"><p style="font-size:.78rem;color:var(--muted);text-align:center;padding:14px">لا توجد تقييمات سابقة</p></div>
+</div>
+</div>
+</div>
+<div class="action-bar"><button class="btn btn-danger btn-sm" onclick="resetEval()">↺ إعادة تعيين</button><button class="btn btn-olive" onclick="saveCurrentServant()">💾 حفظ تقييم هذا الخادم</button></div>
+</div>
+<div id="servantEmptyState" style="text-align:center;padding:50px 20px">
+<div style="font-size:2.8rem;margin-bottom:14px">👥</div>
+<h3 style="color:var(--navy);margin-bottom:7px">لا يوجد خدام مسجلون بعد</h3>
+<p style="margin-bottom:18px">ابدأ بإضافة أول خادم لتسجيل تقييمه</p>
+<button class="btn btn-primary" onclick="addNewServant()">👤+ إضافة أول خادم</button>
+</div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(4)">→ السابق</button><button class="btn btn-primary" onclick="goTo(6)">التالي: خطة 90 يوم ←</button></div>
+</section>
 <!-- S6: 90 DAY PLAN -->
 <section class="section container" id="s6">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 06</div><div class="sec-icon">📅</div>
-    <h2>خطة أول 90 يوم</h2>
-    <p>ابنِ خطتك التنفيذية في ثلاث مراحل — مرتبطة بأهدافك الاستراتيجية تلقائياً</p>
-  </div>
-  <div class="export-bar"><p>📅 الإنجاز الإجمالي: <strong id="totalPctLabel">0%</strong></p><div class="export-btns"><button class="btn btn-outline btn-sm" onclick="loadPlanSamples()">📋 نماذج</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s6','خطة 90 يوم')">📄 PDF</button></div></div>
-  <div class="card mb-16" style="padding:13px 17px">
-    <div style="display:flex;align-items:center;gap:13px;flex-wrap:wrap">
-      <div style="flex:1;min-width:170px"><label>اسم الكنيسة / الفريق</label><input type="text" id="planChurch" placeholder="مثال: كنيسة القيامة - فريق القيادة" oninput="updatePlanHeader()"></div>
-      <div style="flex:1;min-width:140px"><label>تاريخ بدء الخطة</label><input type="date" id="planStart" oninput="updatePlanHeader()"></div>
-    </div>
-  </div>
-  <div class="smart-linked-banner">
-    🔗 <strong>مرتبطة بأهدافك SMART:</strong> الأهداف التي أدخلتها في صفحة الرؤية تظهر هنا
-    <button class="btn btn-primary btn-sm" style="margin-right:auto" onclick="importSmartGoals()">استيراد الأهداف ←</button>
-  </div>
-  <div class="progress-summary">
-    <div class="prog-stat"><div class="prog-num" id="prog1">0/0</div><div class="prog-label">المرحلة الأولى</div></div>
-    <div class="prog-stat"><div class="prog-num" id="prog2">0/0</div><div class="prog-label">المرحلة الثانية</div></div>
-    <div class="prog-stat"><div class="prog-num" id="prog3">0/0</div><div class="prog-label">المرحلة الثالثة</div></div>
-  </div>
-  <div class="days-grid" id="phasesGrid"></div>
-  <div class="card mt-20">
-    <div class="card-title"><span>📈</span> الإنجاز الإجمالي</div>
-    <div style="display:flex;align-items:center;gap:11px;margin-bottom:7px">
-      <div style="flex:1"><div class="kpi-bar-track" style="height:13px"><div class="kpi-bar" id="totalBar" style="width:0%;background:linear-gradient(90deg,var(--olive),var(--navy))"></div></div></div>
-      <div style="font-size:1.15rem;font-weight:800;color:var(--navy);min-width:42px" id="totalPct">0%</div>
-    </div>
-    <div class="tip-box"><strong>🙏 تذكّر:</strong> "أنا غرستُ وأبولّوس سقى، ولكنّ الله كان يُنمّي" — اعمل بجد وثق في الله.</div>
-  </div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(5)">→ السابق</button><button class="btn btn-primary" onclick="goTo(7)">التالي: متابعة الأهداف ←</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 06</div><div class="sec-icon">📅</div>
+<h2>خطة أول 90 يوم</h2>
+<p>ابنِ خطتك التنفيذية في ثلاث مراحل — مرتبطة بأهدافك الاستراتيجية تلقائياً</p>
+</div>
+<div class="export-bar"><p>📅 الإنجاز الإجمالي: <strong id="totalPctLabel">0%</strong></p><div class="export-btns"><button class="btn btn-outline btn-sm" onclick="loadPlanSamples()">📋 نماذج</button><button class="btn btn-olive btn-sm" onclick="exportPDF('s6','خطة 90 يوم')">📄 PDF</button></div></div>
+<div class="card mb-16" style="padding:13px 17px">
+<div style="display:flex;align-items:center;gap:13px;flex-wrap:wrap">
+<div style="flex:1;min-width:170px"><label>اسم الكنيسة / الفريق</label><input id="planChurch" oninput="updatePlanHeader()" placeholder="مثال: كنيسة القيامة - فريق القيادة" type="text"/></div>
+<div style="flex:1;min-width:140px"><label>تاريخ بدء الخطة</label><input id="planStart" oninput="updatePlanHeader()" type="date"/></div>
+</div>
+</div>
+<div class="smart-linked-banner">
+    🔗 <strong>مرتبطة بأهدافك SMART:</strong> الأهداف التي أدخلتها في صفحة الرؤية تظهر هنا
+    <button class="btn btn-primary btn-sm" onclick="importSmartGoals()" style="margin-right:auto">استيراد الأهداف ←</button>
+</div>
+<div class="progress-summary">
+<div class="prog-stat"><div class="prog-num" id="prog1">0/0</div><div class="prog-label">المرحلة الأولى</div></div>
+<div class="prog-stat"><div class="prog-num" id="prog2">0/0</div><div class="prog-label">المرحلة الثانية</div></div>
+<div class="prog-stat"><div class="prog-num" id="prog3">0/0</div><div class="prog-label">المرحلة الثالثة</div></div>
+</div>
+<div class="days-grid" id="phasesGrid"></div>
+<div class="card mt-20">
+<div class="card-title"><span>📈</span> الإنجاز الإجمالي</div>
+<div style="display:flex;align-items:center;gap:11px;margin-bottom:7px">
+<div style="flex:1"><div class="kpi-bar-track" style="height:13px"><div class="kpi-bar" id="totalBar" style="width:0%;background:linear-gradient(90deg,var(--olive),var(--navy))"></div></div></div>
+<div id="totalPct" style="font-size:1.15rem;font-weight:800;color:var(--navy);min-width:42px">0%</div>
+</div>
+<div class="tip-box"><strong>🙏 تذكّر:</strong> "أنا غرستُ وأبولّوس سقى، ولكنّ الله كان يُنمّي" — اعمل بجد وثق في الله.</div>
+</div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(5)">→ السابق</button><button class="btn btn-primary" onclick="goTo(7)">التالي: متابعة الأهداف ←</button></div>
+</section>
 <!-- S7: SMART TRACKING -->
 <section class="section container" id="s7">
-  <div class="sec-header">
-    <div class="sec-num">التطبيق 07</div><div class="sec-icon">🔄</div>
-    <h2>متابعة الأهداف الاستراتيجية</h2>
-    <p>تابع تقدم أهدافك SMART أسبوعياً — أدخل نسبة الإنجاز وملاحظاتك المختصرة</p>
-  </div>
-  <div class="export-bar"><p>🔄 آخر تحديث: <strong id="lastTrackDate">—</strong></p><div class="export-btns"><button class="btn btn-olive btn-sm" onclick="exportPDF('s7','متابعة الأهداف')">📄 PDF</button></div></div>
-  <div id="trackingEmptyState" style="text-align:center;padding:45px 20px">
-    <div style="font-size:2.8rem;margin-bottom:13px">🎯</div>
-    <h3 style="color:var(--navy);margin-bottom:7px">لا توجد أهداف مضافة بعد</h3>
-    <p style="margin-bottom:16px">أضف أهدافك الاستراتيجية في صفحة "الرؤية والأهداف" أولاً</p>
-    <button class="btn btn-primary" onclick="goTo(2)">اذهب لإضافة الأهداف ←</button>
-  </div>
-  <div id="trackingList"></div>
-  <div class="action-bar"><button class="btn btn-outline" onclick="goTo(6)">→ السابق</button><button class="btn btn-navy" onclick="saveProgress()">💾 حفظ كل التقدم</button></div>
-</section>
+<div class="sec-header">
 
+<div class="sec-num">التطبيق 07</div><div class="sec-icon">🔄</div>
+<h2>متابعة الأهداف الاستراتيجية</h2>
+<p>تابع تقدم أهدافك SMART أسبوعياً — أدخل نسبة الإنجاز وملاحظاتك المختصرة</p>
+</div>
+<div class="export-bar"><p>🔄 آخر تحديث: <strong id="lastTrackDate">—</strong></p><div class="export-btns"><button class="btn btn-olive btn-sm" onclick="exportPDF('s7','متابعة الأهداف')">📄 PDF</button></div></div>
+<div id="trackingEmptyState" style="text-align:center;padding:45px 20px">
+<div style="font-size:2.8rem;margin-bottom:13px">🎯</div>
+<h3 style="color:var(--navy);margin-bottom:7px">لا توجد أهداف مضافة بعد</h3>
+<p style="margin-bottom:16px">أضف أهدافك الاستراتيجية في صفحة "الرؤية والأهداف" أولاً</p>
+<button class="btn btn-primary" onclick="goTo(2)">اذهب لإضافة الأهداف ←</button>
+</div>
+<div id="trackingList"></div>
+<div class="action-bar"><button class="btn btn-outline" onclick="goTo(6)">→ السابق</button><button class="btn btn-navy" onclick="saveProgress()">💾 حفظ كل التقدم</button></div>
+</section>
 <div class="toast" id="toast"></div>
 </div>
-
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
